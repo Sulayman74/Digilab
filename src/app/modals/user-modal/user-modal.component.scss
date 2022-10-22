@@ -1,0 +1,14 @@
+section {
+  .user-infos {
+    display: flex;
+    align-items: center;
+    img {
+      border: 1px solid rgb(204, 204, 241);
+      filter: drop-shadow(2px 2px 2px rgb(1, 5, 126));
+    }
+    div {
+      padding: 10px;
+      margin: 10px;
+    }
+  }
+}

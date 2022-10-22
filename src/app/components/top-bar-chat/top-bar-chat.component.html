@@ -1,0 +1,15 @@
+<section class="container-fluid">
+  <div *ngIf="userDatas && userDatas.first_name">
+    <mat-card>
+      <mat-card-content>
+        <p>{{ userDatas.first_name }}</p>
+        <p>{{ userDatas.last_name }}</p>
+        <img
+          mat-card-avatar
+          [src]="userDatas.avatar"
+          [alt]="userDatas.first_name"
+        />
+      </mat-card-content>
+    </mat-card>
+  </div>
+</section>

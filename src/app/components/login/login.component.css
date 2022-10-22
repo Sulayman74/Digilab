@@ -1,0 +1,16 @@
+body {
+  background-color: blanchedalmond;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+body .example-card {
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: space-between;
+  background-color: whitesmoke;
+  filter: drop-shadow(2px 3px 5px grey);
+  height: 50vh;
+}/*# sourceMappingURL=login.component.css.map */

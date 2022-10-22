@@ -1,0 +1,21 @@
+section{
+
+    .formulaire{
+        background-color: bisque;
+        color: black;
+        font-size: 1.2em;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-flow: column wrap;
+        position: relative;
+        padding: 15px;
+    }
+    
+    .spinner{
+        position:absolute;
+       top: 50%;
+       left: 50%;
+       transform: translate(-50%,-50%);
+    }
+}

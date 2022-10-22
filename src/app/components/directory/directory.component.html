@@ -1,0 +1,16 @@
+<p>directory works</p>
+
+<button type="button" class="ajouter" mat-mini-fab (click)="addNewDir()">
+  <mat-icon>create_new_folder</mat-icon>
+</button>
+
+<div *ngFor="let directory of directories" >
+
+  <span>
+    <mat-icon>folder</mat-icon>
+    {{directory.data.nom}}
+    {{directory.data.chemin}}
+    {{directory.data.description}}
+  </span>
+
+</div>

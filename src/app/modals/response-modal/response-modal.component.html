@@ -1,0 +1,15 @@
+<h1 class="text-primary" mat-dialog-title>Voici les réponses du serveur</h1>
+<mat-list *ngIf="data.infos.nom">
+  <mat-list-item> Nom :{{ data.infos.nom }}</mat-list-item>
+  <mat-list-item> Prénom :{{ data.infos.prenom }} </mat-list-item>
+  <mat-list-item> Pseudo : {{ data.infos.pseudo }} </mat-list-item>
+  <mat-list-item>
+    Date de naissance :{{ data.infos.dateDeNaissance }}</mat-list-item
+  >
+  <mat-list-item> Email{{ data.infos.email }} </mat-list-item>
+  <mat-list-item> {{ data.infos.password }} </mat-list-item>
+  <mat-list-item> {{ data.infos.confirmPassword }} </mat-list-item>
+  <mat-list-item> {{ data.infos.skills }} </mat-list-item>
+  <mat-list-item> {{ data.creation }} </mat-list-item>
+  <mat-list-item> {{ data.id }} </mat-list-item>
+</mat-list>

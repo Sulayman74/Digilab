@@ -1,0 +1,11 @@
+<section>
+  <div *ngIf="userDatas && userDatas.first_name">
+    <div>{{ userDatas.first_name }}</div>
+    <div>{{ userDatas.last_name }}</div>
+    <div>
+      <img [src]="userDatas.avatar" alt="" />
+    </div>
+  </div>
+
+  <app-top-bar-chat></app-top-bar-chat>
+</section>

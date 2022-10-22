@@ -1,0 +1,24 @@
+section {
+  .card {
+    background-color: rgb(145, 145, 219);
+
+    .header {
+      font-size: 1.05em;
+      margin-bottom: 10px;
+      text-transform: uppercase;
+      color: black;
+    }
+
+    .mat-card-content {
+      padding: 10px;
+      display: flex;
+      font-size: 1.1em;
+      color: blanchedalmond;
+      font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+      flex-flow: column wrap;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+    }
+  }
+}

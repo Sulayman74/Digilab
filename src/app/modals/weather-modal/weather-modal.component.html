@@ -1,0 +1,25 @@
+<section>
+  <form class="formulaire" [formGroup]="meteoForm" (ngSubmit)="onSubmit()">
+    <mat-form-field appearance="fill">
+      <mat-label>Rue</mat-label>
+
+      <input type="text" matInput formControlName="rue" />
+      <!-- <input type="text" matInput [placeholder]="meteo.rue" > -->
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Code Postale</mat-label>
+      <input type="text" matInput formControlName="codePostale" />
+      <!-- <input type="number" min="900" matInput [placeholder]="meteo.codePostale" > -->
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Ville</mat-label>
+      <input type="text" matInput formControlName="ville" />
+      <!-- <input type="text" matInput [placeholder]="meteo.ville" > -->
+    </mat-form-field>
+    <button mat-raised-button color="primary" type="submit">Valider</button>
+  </form>
+
+  <div class="spinner" *ngIf="show">
+    <mat-progress-spinner mode="indeterminate"></mat-progress-spinner>
+  </div>
+</section>

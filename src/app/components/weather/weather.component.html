@@ -1,0 +1,24 @@
+<section>
+  <mat-card class="card">
+    <mat-card-title-group class="header">
+      Les prévisions météo
+    </mat-card-title-group>
+    <mat-card-content>
+      <p>{{ meteo.rue }}</p>
+      <p>{{ meteo.codePostale }}</p>
+      <p>{{ meteo.ville }} <mat-icon>home</mat-icon></p>
+      <p>{{ meteo.temperature }} °C <mat-icon>public</mat-icon></p>
+    </mat-card-content>
+
+    <mat-card-actions>
+      <button
+        type="button"
+        mat-raised-button
+        color="accent"
+        (click)="onOpendModal()"
+      >
+        <mat-icon>place</mat-icon>
+      </button>
+    </mat-card-actions>
+  </mat-card>
+</section>

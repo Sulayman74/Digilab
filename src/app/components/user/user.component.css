@@ -1,0 +1,15 @@
+.card_container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-flow: column wrap;
+}
+.card_container .user_card {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  background: #000;
+  width: 30%;
+  padding: 10px;
+  margin: 5px;
+}/*# sourceMappingURL=user.component.css.map */

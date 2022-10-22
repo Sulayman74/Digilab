@@ -1,0 +1,11 @@
+section {
+  padding: 10px;
+  margin: auto;
+  background-color: #fff;
+}
+section .ajouter {
+  margin-bottom: 10px;
+}
+section .champs {
+  margin: 15px 10px;
+}/*# sourceMappingURL=register.component.css.map */

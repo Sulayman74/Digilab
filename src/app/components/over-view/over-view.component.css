@@ -1,0 +1,11 @@
+.card {
+  padding: 0 10px;
+  background-color: bisque;
+  display: flex;
+  justify-content: space-around;
+  flex-flow: column wrap;
+}
+.card .header {
+  padding: 5 0px;
+  margin: 10px 0px;
+}/*# sourceMappingURL=over-view.component.css.map */

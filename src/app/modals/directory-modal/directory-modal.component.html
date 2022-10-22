@@ -1,0 +1,45 @@
+<section class="formulaire">
+  <mat-card>
+    <mat-card-header class="text-primary">
+      Création d'un dossier
+    </mat-card-header>
+    <form
+      class="container-fluid"
+      (ngSubmit)="onSubmit()"
+      [formGroup]="directoryForm"
+    >
+      <mat-form-field>
+        <mat-label>Nom</mat-label>
+        <input
+          type="text"
+          matInput
+          placeholder="Nom du dossier"
+          formControlName="nom"
+        />
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Chemin</mat-label>
+        <input
+          type="text"
+          matInput
+          placeholder="Chemin du dossier"
+          formControlName="chemin"
+        />
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Description</mat-label>
+        <!-- <input
+          type="text"
+          matInput
+          placeholder="Description du dossier"
+          formControlName="description"
+        /> -->
+        <textarea matInput formControlName="description"></textarea>
+      </mat-form-field>
+    <mat-card-actions align="end">
+      <button type="submit" mat-raised-button color="accent" [disabled]="directoryForm.invalid">Valider</button>
+    </mat-card-actions>
+  </form>
+
+  </mat-card>
+</section>

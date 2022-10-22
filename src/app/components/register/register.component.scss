@@ -1,0 +1,17 @@
+section {
+  padding: 10px;
+  margin: auto;
+  background-color: #fff;
+
+  .ajouter {
+    margin-bottom: 10px;
+  }
+  .champs {
+    margin: 15px 10px;
+  }
+  .adresse {
+    .mat-form-field {
+      margin-right: 5px;
+    }
+  }
+}

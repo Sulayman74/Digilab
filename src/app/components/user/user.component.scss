@@ -1,0 +1,32 @@
+.utilisateurs {
+  .mat-card {
+    width: 100%;
+    .firstname {
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      font-size: large;
+    }
+    .name {
+      font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+      color: darkblue;
+    }
+    .mail {
+      color: grey;
+      font-size: smaller;
+    }
+    div {
+      padding: 5px 0;
+      text-align: center;
+    }
+    .profile {
+      span {
+        font-size: xx-small;
+      }
+      img {
+        height: 60px;
+        width: 60px;
+        border: 1px solid rgb(204, 204, 241);
+        filter: drop-shadow(2px 2px 2px black);
+      }
+    }
+  }
+}

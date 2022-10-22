@@ -1,0 +1,35 @@
+<section>
+  <mat-card>
+    <mat-card-title> Informations </mat-card-title>
+    <mat-card-content>
+      Voulez vous vraiment chatter avec cette personne?
+    </mat-card-content>
+    <mat-list class="user-infos">
+      <img mat-card-avatar [src]="dataUser.imgUrl" alt="" />
+      <div>
+        {{ dataUser.prenom }}
+      </div>
+      <div>
+        {{ dataUser.nom }}
+      </div>
+    </mat-list>
+    <mat-card-actions class="btns">
+      <button
+        mat-raised-button
+        color="accent"
+        (click)="onNoClick()"
+        type="button"
+      >
+        Non
+      </button>
+      <button
+        mat-flat-button
+        color="primary"
+        type="button"
+        (click)="onYesClick()"
+      >
+        Oui
+      </button>
+    </mat-card-actions>
+  </mat-card>
+</section>
