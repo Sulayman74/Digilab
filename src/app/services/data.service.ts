@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { job } from '../job';
 
 // ** Service dans lequel je récupère les datas en général
 
@@ -9,14 +10,19 @@ import { Observable } from 'rxjs';
 })
 export class DataService {
 
-  urlCountries = "https://restcountries.com/v3.1/all"
+  jobs = job
+  urlCountries = "https://cors-anywhere.herokuapp.com/https://restcountries.com/v3.1/all"
+  jokeAPI = "https://cors-anywhere.herokuapp.com/https://official-joke-api.appspot.com/random_ten"
+  constructor(private _http: HttpClient) { }
 
-  constructor(private http: HttpClient) { }
-
-
+getJobs(){
+  return this.jobs
+}
   getCountries(): Observable<any> {
-
-    return this.http.get(this.urlCountries)
+    return this._http.get(this.urlCountries)
+  }
+  getJokeChat(): Observable<any> {
+    return this._http.get(this.jokeAPI)
   }
 
 }

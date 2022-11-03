@@ -3,11 +3,14 @@
     <mat-card-title-group class="header">
       Les prévisions météo
     </mat-card-title-group>
-    <mat-card-content>
+    <mat-card-content *ngIf="meteo && meteo.rue">
       <p>{{ meteo.rue }}</p>
       <p>{{ meteo.codePostale }}</p>
-      <p>{{ meteo.ville }} <mat-icon>home</mat-icon></p>
-      <p>{{ meteo.temperature }} °C <mat-icon>public</mat-icon></p>
+      <div class="ville">
+        <p>{{ meteo.ville }}</p>
+        <mat-icon>home</mat-icon>
+      </div>
+      <p>{{ meteo.temperature }} °C</p>
     </mat-card-content>
 
     <mat-card-actions>
@@ -16,6 +19,14 @@
         mat-raised-button
         color="accent"
         (click)="onOpendModal()"
+      >
+        <mat-icon>map</mat-icon>
+      </button>
+      <button
+        type="button"
+        mat-raised-button
+        color="primary"
+        (click)="onGetPosition()"
       >
         <mat-icon>place</mat-icon>
       </button>

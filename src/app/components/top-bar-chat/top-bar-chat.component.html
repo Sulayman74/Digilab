@@ -1,15 +1,7 @@
-<section class="container-fluid">
-  <div *ngIf="userDatas && userDatas.first_name">
-    <mat-card>
-      <mat-card-content>
-        <p>{{ userDatas.first_name }}</p>
-        <p>{{ userDatas.last_name }}</p>
-        <img
-          mat-card-avatar
-          [src]="userDatas.avatar"
-          [alt]="userDatas.first_name"
-        />
-      </mat-card-content>
-    </mat-card>
-  </div>
+<section class="container">
+  <mat-card-content *ngIf="users && users.firstName">
+    <p>{{ users.firstName }}</p>
+    <p>{{ users.lastName }}</p>
+    <img mat-card-avatar [src]="users.avatar" alt="" />
+  </mat-card-content>
 </section>

@@ -1,24 +1,33 @@
 .left-side {
-    box-sizing: border-box;
-    background-color: peru;
-    height: 100vh;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
+  box-sizing: border-box;
+  background-color: rgb(19, 100, 167);
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
 
-    a {
-        padding: 10px;
-        text-decoration: none;
-        color: black;
-        font-size: 1.2rem;
-        font-family: Georgia, 'Times New Roman', Times, serif;
-        transition: all 0.3s ease-in;
-        transform-origin: left;
-
-        &:hover {
-            transform: scale(1.05);
-            color: whitesmoke;
-        }
+  a {
+    padding: 10px;
+    text-decoration: none;
+    color: black;
+    font-size: 1.1em;
+    text-align: center;
+    font-family: Georgia, "Times New Roman", Times, serif;
+    transition: all 0.3s ease-in;
+    transform-origin: left;
+    .mat-icon {
+      height: 100%;
+      width: 100%;
+      color: goldenrod;
+      font-size: 3em;
+      filter: drop-shadow(2px 1px 2px (rgb(211, 212, 233)));
     }
+
+    &:hover {
+      transform: scale(1.05);
+      color: whitesmoke;
+    }
+  }
 }

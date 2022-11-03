@@ -1,11 +1,14 @@
-.meteo{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    background-color: grey;
-    box-sizing: border-box;
-    padding: 10px;
-    height: 100vh;
-    width: 100%;
+.right-side{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  background-color: rgb(19, 100, 167);
+  box-sizing: border-box;
+  padding: 10px;
+  height: 100vh;
+  width: 100%;
+  .mat-icon{
+    cursor: pointer;
+  }
 }

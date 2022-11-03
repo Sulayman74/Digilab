@@ -1,24 +1,45 @@
 section {
   .card {
-    background-color: rgb(145, 145, 219);
+    background: linear-gradient(to bottom, #8ca1ca, #8ca1ca51);
 
     .header {
-      font-size: 1.05em;
+      text-align: center;
+      font-size: larger;
+      color: white;
       margin-bottom: 10px;
-      text-transform: uppercase;
-      color: black;
     }
 
     .mat-card-content {
-      padding: 10px;
+      p {
+        padding: 0;
+        margin: 0;
+      }
       display: flex;
-      font-size: 1.1em;
-      color: blanchedalmond;
+      font-size: 1em;
+      color: rgb(20, 13, 1);
       font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
-      flex-flow: column wrap;
-      justify-content: center;
+      flex-flow: column;
+      justify-content: space-evenly;
       align-items: center;
       text-align: center;
+      .ville {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        // background: #000;
+        width: 70%;
+      }
+    }
+
+    .mat-card-actions {
+      button {
+        padding: 0;
+        margin: 0;
+      }
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
     }
   }
 }

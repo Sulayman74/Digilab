@@ -1,32 +1,44 @@
 .utilisateurs {
-  .mat-card {
+  .rechercher {
+    margin: 5px 0;
+    font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS",
+      sans-serif;
+    font-size: 1.1em;
+    input {
+      padding: 5px;
+    }
+  }
+
+  .eachUser {
+    padding: auto;
+    height: 15vh;
     width: 100%;
+    border: 1px bisque solid;
+    box-shadow: 2px 2px 5px black;
+    border-radius: 10px;
+    margin: 5px 0;
+    background: linear-gradient(
+      to right,
+      rgba(19, 100, 167, 0.486),
+      rgb(19, 70, 155, 0.48)
+    );
     .firstname {
-      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-      font-size: large;
+      color: grey;
+      text-transform: capitalize;
+      font-size: small;
     }
     .name {
-      font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
-      color: darkblue;
+      text-transform: uppercase;
     }
     .mail {
-      color: grey;
-      font-size: smaller;
+      font-size: x-small;
     }
-    div {
-      padding: 5px 0;
-      text-align: center;
-    }
-    .profile {
-      span {
-        font-size: xx-small;
-      }
-      img {
-        height: 60px;
-        width: 60px;
-        border: 1px solid rgb(204, 204, 241);
-        filter: drop-shadow(2px 2px 2px black);
-      }
+
+    .city {
+      padding: 10px 0;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
     }
   }
 }

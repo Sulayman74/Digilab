@@ -5,14 +5,15 @@
       Voulez vous vraiment chatter avec cette personne?
     </mat-card-content>
     <mat-list class="user-infos">
-      <img mat-card-avatar [src]="dataUser.imgUrl" alt="" />
-      <div>
-        {{ dataUser.prenom }}
+      <img mat-card-avatar [src]="dataUser.avatar" alt="" />
+      <div class="prenom">
+        {{ dataUser.firstName }}
       </div>
-      <div>
-        {{ dataUser.nom }}
+      <div class="nom">
+        {{ dataUser.lastName }}
       </div>
     </mat-list>
+
     <mat-card-actions class="btns">
       <button
         mat-raised-button

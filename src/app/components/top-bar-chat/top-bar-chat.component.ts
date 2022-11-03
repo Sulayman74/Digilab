@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 import { UserService } from 'src/app/services/user.service';
 
@@ -9,14 +9,12 @@ import { UserService } from 'src/app/services/user.service';
 })
 export class TopBarChatComponent implements OnInit {
 
-  userDatas!: any
-  constructor(private _userService: UserService) { }
+  @Input() users!: any
+
+  constructor() { }
 
   ngOnInit(): void {
-    this._userService.getCurrentUser().subscribe((response: any) => {
-      this.userDatas = response
-    }
-    )
+
   }
 
 }

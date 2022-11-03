@@ -1,16 +1,15 @@
-<form (ngSubmit)="onSubmit()" [formGroup]="loginForm">
-  <section class="container-fluid">
+<section class="container-fluid">
+  <form (ngSubmit)="onSubmit()" [formGroup]="loginForm">
     <mat-card class="card">
       <mat-card-title class="text-primary">LOGIN</mat-card-title>
-      <mat-card-subtitle>Loggez vous ou enregistrez vous!</mat-card-subtitle>
+      <mat-card-subtitle>Sign in or Sign up</mat-card-subtitle>
 
       <mat-list>
         <mat-list-item>
           <mat-form-field appearance="legacy">
-            <mat-label> Votre email</mat-label>
             <input
               matInput
-              placeholder="email"
+              placeholder="Email"
               formControlName="email"
               required
             />
@@ -19,16 +18,14 @@
         </mat-list-item>
         <mat-list-item>
           <mat-form-field>
-            <mat-label> Mot de passe</mat-label>
             <input
               matInput
+              placeholder="Password"
               formControlName="password"
               placeholder="password"
               required
             />
-            <mat-hint
-              >entrez un mot de passse entre 8 et 12 caractères</mat-hint
-            >
+            <mat-hint>entre 8 et 12 caractères</mat-hint>
             <mat-icon matSuffix>how_to_reg</mat-icon>
           </mat-form-field>
         </mat-list-item>
@@ -40,13 +37,18 @@
           mat-raised-button
           color="primary"
         >
-          Register
+          Sign up
         </button>
 
-        <button mat-flat-button [disabled]="loginForm.invalid" color="warn">
-          Login
+        <button
+          type="submit"
+          mat-flat-button
+          [disabled]="loginForm.invalid"
+          color="warn"
+        >
+          Sign in
         </button>
       </mat-card-actions>
     </mat-card>
-  </section>
-</form>
+  </form>
+</section>

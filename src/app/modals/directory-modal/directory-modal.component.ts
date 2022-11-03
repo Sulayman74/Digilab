@@ -1,9 +1,10 @@
 // ** le modal qui apparait lors du click dans le component directory
 
-import { UserService } from 'src/app/services/user.service';
-import { FormGroup, FormBuilder, Validators} from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+
 import { MatDialogRef } from '@angular/material/dialog';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-directory-modal',
@@ -37,10 +38,10 @@ export class DirectoryModalComponent implements OnInit {
  
   onSubmit() {
     
-    this._submitForm.postData(this.directoryForm.value).subscribe((responseFromServer: any) => {
-      console.log(responseFromServer);
-      this._dialogRef.close(responseFromServer)
-    })
+    // this._submitForm.postData(this.directoryForm.value).subscribe((responseFromServer: any) => {
+    //   console.log(responseFromServer);
+    //   this._dialogRef.close(responseFromServer)
+    // })
   }
 
 }
