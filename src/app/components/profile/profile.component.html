@@ -1,1 +1,13 @@
-<p>profile works!</p>
+<section class="container">
+  <p class="avatar">
+    <img mat-card-sm-image [src]="profileUser.avatar" alt="" />
+  </p>
+  <div class="infosUser">
+    <p class="nom">
+      {{ profileUser.lastName }}
+    </p>
+    <p class="prenom">
+      {{ profileUser.firstName }}
+    </p>
+  </div>
+</section>

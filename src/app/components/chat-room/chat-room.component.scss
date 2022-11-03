@@ -1,0 +1,56 @@
+section {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: flex-start;
+  height: 100vh;
+  width: 40vw;
+
+  .discussion {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    height: auto;
+    overflow-y: auto;
+    overflow-x: hidden;
+    color: black;
+
+    .chat {
+      padding: 1px 10px;
+      display: flex;
+      justify-items: center;
+      flex-direction: column;
+      width: 39vw;
+
+      .gauche {
+        align-self: flex-start;
+      }
+
+      .droite {
+        align-self: flex-end;
+      }
+
+      .mat-chip {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+      }
+    }
+  }
+
+  .msg-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: rgb(140, 161, 202);
+    width: 100%;
+    padding: 8px 15px;
+    border-radius: 5px;
+    outline: auto;
+    .mat-icon {
+      cursor: pointer;
+      filter: drop-shadow(2px 2px 1px black);
+    }
+  }
+}

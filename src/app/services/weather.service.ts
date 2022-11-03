@@ -10,9 +10,12 @@ import { Observable } from 'rxjs';
 })
 export class WeatherService {
 
-  urlGps = "https://api-adresse.data.gouv.fr/search/";
+  urlGps = "https://cors-anywhere.herokuapp.com/https://api-adresse.data.gouv.fr/search/";
 
-  urlMeteo = "https://api.open-meteo.com/v1/forecast/"
+  urlGeoLoc = "https://cors-anywhere.herokuapp.com/https://api-adresse.data.gouv.fr/reverse/"
+
+
+  urlMeteo = "https://cors-anywhere.herokuapp.com/https://api.open-meteo.com/v1/forecast/"
 
   constructor(private _http: HttpClient) { }
 
@@ -21,6 +24,7 @@ export class WeatherService {
    * @param  {string} ville
    * @param  {number} codePostale
    */
+
   getPosition(rue: string, codePostale: number, ville: string): Observable<any> {
 
     // variable locale params
@@ -37,6 +41,14 @@ export class WeatherService {
   getWeather(longitude: number, latitude: number): Observable<any> {
     let parameters = new HttpParams().append('latitude', latitude).append('longitude', longitude).append('hourly', 'temperature_2m').append('timezone', 'Europe/Berlin')
     return this._http.get(this.urlMeteo,
+      { params: parameters })
+  }
+
+  getGeoLocation(lat: number, lon: number): Observable<any> {
+    let parameters = new HttpParams()
+      .append("lat", lat)
+      .append("lon", lon)
+    return this._http.get(this.urlGeoLoc,
       { params: parameters })
   }
 

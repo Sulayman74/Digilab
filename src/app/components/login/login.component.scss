@@ -1,25 +1,28 @@
 section {
-  background-image: url("https://imgr.cineserie.com/2021/01/spider-man-new-generation-2-une-nouvelle-version-du-heros-confirmee.png?imgeng=/f_jpg/cmpr_0/w_2552/h_1914/m_cropbox&ver=1");
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: contain;
-  width: 100vw;
-  height: 100vh;
+  background: linear-gradient(217deg, bisque, rgba(159, 22, 22, 0) 70.71%),
+    linear-gradient(127deg, orange, rgba(0, 255, 0, 0) 70.71%),
+    linear-gradient(336deg, beige, rgba(0, 0, 255, 0) 70.71%);
   display: flex;
   justify-content: center;
   align-items: center;
-
+  height: 100vh;
+  width: 100%;
   .card {
-    .mat-icon {
-      filter: drop-shadow(2px 2px 3px black);
-    }
+    margin: auto;
+    padding: 15px 5px;
+    box-sizing: border-box;
+    width: 100%;
+    height: 100%;
     display: flex;
-    flex-flow: column wrap;
+    flex-flow: column nowrap;
     align-items: center;
     justify-content: space-evenly;
     background-color: whitesmoke;
-    filter: drop-shadow(2px 3px 5px rgb(245, 239, 208));
-    height: 45vh;
+    border: 1px solid white;
+    filter: drop-shadow(5px 2px 2px rgb(27, 23, 1));
+    .mat-icon {
+      filter: drop-shadow(2px 2px 1px rgb(154, 149, 149));
+    }
     .btns {
       margin-top: 15px;
       display: flex;

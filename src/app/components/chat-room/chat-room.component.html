@@ -1,11 +1,45 @@
-<section>
-  <div *ngIf="userDatas && userDatas.first_name">
-    <div>{{ userDatas.first_name }}</div>
-    <div>{{ userDatas.last_name }}</div>
-    <div>
-      <img [src]="userDatas.avatar" alt="" />
-    </div>
+<section *ngIf="dataUsers && dataUsers.firstName" class="container-fluid">
+  <app-top-bar-chat [users]="dataUsers"></app-top-bar-chat>
+
+  <div class="discussion" #scrollMe [scrollTop]="scrollMe.scrollHeight">
+    <!-- <div *ngIf="dataUsers && dataUsers.firstName>
+      <div
+        class="chat"
+        *ngFor="
+          let msg of jokes;
+          let isLast = last;
+          let isOdd = odd;
+          let isEven = even
+        "
+      >
+        <p class="gauche" *ngIf="isOdd">
+          <mat-chip-list>
+            <mat-chip color="accent" selected>{{ msg.setup }}</mat-chip>
+          </mat-chip-list>
+        </p>
+        <p class="droite">
+          <mat-chip *ngIf="isEven" color="primary" selected>{{
+            msg.punchline
+          }}</mat-chip>
+        </p>
+        <p class="droite">{{ msg.newSetup }}</p>
+        <p class="gauche" *ngIf="isLast">
+          <mat-chip-list>
+            {{ msg.newPunchline }}
+          </mat-chip-list>
+        </p>
+      </div>
+    </div> -->
   </div>
 
-  <app-top-bar-chat></app-top-bar-chat>
+  <div class="msg-container">
+    <input
+      placeholder="Ecrivez un message"
+      type="text"
+      matInput
+      [formControl]="msgContainer"
+      (keypress)="onMessagesSend($event)"
+    />
+    <mat-icon (click)="onSend()">send</mat-icon>
+  </div>
 </section>

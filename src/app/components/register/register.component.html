@@ -31,144 +31,189 @@
 
 <section class="container-fluid">
   <form [formGroup]="userForm" (ngSubmit)="onSubmit()">
-    <p>
-      <mat-form-field appearance="legacy">
-        <mat-label>Nom</mat-label>
-        <input
-          type="text"
-          matInput
-          placeholder="Enter your name"
-          formControlName="nom"
-        />
-        <mat-icon matSuffix>people</mat-icon>
-      </mat-form-field>
-    </p>
-    <p>
-      <mat-form-field appearance="standard">
-        <mat-label>Prénom</mat-label>
-        <input
-          matInput
-          placeholder="Enter your first name"
-          formControlName="prenom"
-          type="text"
-        />
-        <mat-icon matSuffix>people</mat-icon>
-      </mat-form-field>
-    </p>
-    <p>
-      <mat-form-field appearance="standard">
-        <mat-label>Surnom</mat-label>
-        <input matInput placeholder="your pseudo" formControlName="pseudo" />
-        <mat-icon matSuffix>people</mat-icon>
-      </mat-form-field>
-    </p>
-    <p>
-      <mat-form-field appearance="fill">
-        <mat-label>Date de naissance</mat-label>
-        <input
-          type="date"
-          matInput
-          placeholder="Placeholder"
-          formControlName="dateDeNaissance"
-        />
-      </mat-form-field>
-    </p>
-    <p>
-      <mat-form-field appearance="fill">
-        <mat-label>Email</mat-label>
-        <input
-          matInput
-          placeholder="Enter your email"
-          formControlName="email"
-          type="email"
-          required
-        />
-        <mat-error *ngIf="email.invalid">{{ getErrorMessage() }}</mat-error>
-        <mat-icon matSuffix>mail</mat-icon>
-      </mat-form-field>
-    </p>
-    <p class="adresse">
-      <mat-form-field appearance="fill">
-        <mat-label>Adresse</mat-label>
-        <input
-          type="text"
-          matInput
-          placeholder="Enter your adress"
-          formControlName="adresse"
-        />
-        <mat-icon matSuffix>home</mat-icon>
-      </mat-form-field>
-      <mat-form-field appearance="fill">
-        <mat-label>Ville</mat-label>
-        <input
-          type="text"
-          matInput
-          placeholder="Enter your City"
-          formControlName="adresse"
-        />
-      </mat-form-field>
-      <mat-form-field appearance="fill">
-        <mat-label>Code Postale</mat-label>
-        <input
-          type="text"
-          matInput
-          placeholder="Enter your post code"
-          formControlName="adresse"
-        />
-      </mat-form-field>
-    </p>
-    <p>
-      <mat-form-field appearance="fill">
-        <mat-label>Password</mat-label>
-        <input
-          matInput
-          placeholder="your password"
-          formControlName="password"
-          required
-        />
-        <mat-error *ngIf="password.invalid">{{ getErrorMessage() }}</mat-error>
-        <mat-icon matSuffix>lock</mat-icon>
-        <mat-hint> mininum 8 maximum 12 </mat-hint>
-      </mat-form-field>
-    </p>
-    <p>
-      <mat-form-field appearance="fill">
-        <mat-label>Confirmez password</mat-label>
-        <input
-          matInput
-          placeholder="password"
-          formControlName="confirmPassword"
-          type="password"
-        />
-        <mat-icon matSuffix>lock</mat-icon>
-      </mat-form-field>
-    </p>
-    <p>
-      <button type="button" class="ajouter" mat-mini-fab (click)="addSkill()">
-        <mat-icon>add</mat-icon>
-      </button>
-      <ng-container formArrayName="skills">
-        <div *ngFor="let item of skills.controls; index as i">
-          <input class="champs" [formControlName]="i" />
-          <button
+    <div class="top">
+      <div class="name">
+        <mat-form-field appearance="fill">
+          <mat-label>Nom</mat-label>
+          <input
             type="text"
-            class="supprimer"
-            mat-mini-fab
-            color="accent"
-            (click)="deleteSkill(i)"
-          >
-            <mat-icon>delete</mat-icon>
-          </button>
-        </div>
-      </ng-container>
-    </p>
-    <button
-      type="submit"
-      mat-raised-button
-      color="primary"
-      [disabled]="userForm.invalid"
-    >
-      Valider
-    </button>
+            matInput
+            placeholder="Enter your name"
+            formControlName="lastName"
+          />
+          <mat-icon matSuffix>person</mat-icon>
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label>Prénom</mat-label>
+          <input
+            matInput
+            placeholder="Enter your first name"
+            formControlName="firstName"
+            type="text"
+          />
+          <mat-icon matSuffix>person_outline</mat-icon>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+          <mat-label>Surnom</mat-label>
+          <input
+            matInput
+            placeholder="your pseudo"
+            formControlName="username"
+          />
+          <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+          <mat-label>Password</mat-label>
+          <input
+            matInput
+            placeholder="your password"
+            formControlName="password"
+            required
+          />
+          <mat-icon matSuffix>lock</mat-icon>
+          <mat-hint> mininum 8 maximum 12 </mat-hint>
+        </mat-form-field>
+      </div>
+
+      <div class="infos">
+        <mat-form-field appearance="fill">
+          <mat-label>Date de naissance</mat-label>
+          <input
+            type="date"
+            matInput
+            placeholder="dateDeNaissance"
+            formControlName="dateDeNaissance"
+          />
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label>Phone Number</mat-label>
+          <input
+            type="text"
+            matInput
+            placeholder="enter your phone number"
+            formControlName="phoneNumber"
+          />
+          <mat-icon matSuffix>call</mat-icon>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+          <mat-label>Email</mat-label>
+          <input
+            matInput
+            placeholder="Enter your email"
+            formControlName="email"
+            type="email"
+            required
+          />
+          <mat-error *ngIf="email.invalid">{{
+            getErrorMessageMail()
+          }}</mat-error>
+          <mat-icon matSuffix>mail</mat-icon>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+          <mat-error *ngIf="confirmPassword.invalid">{{
+            getErrorMessagePassword()
+          }}</mat-error>
+          <mat-label>Confirmez password</mat-label>
+          <input
+            matInput
+            placeholder="password"
+            formControlName="confirmPassword"
+            type="password"
+          />
+          <mat-icon matSuffix>fingerprint</mat-icon>
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="bottom">
+      <div class="mdp">
+        <mat-form-field class="example-full-width" appearance="fill">
+          <mat-label>Pays</mat-label>
+          <input
+            matInput
+            type="text"
+            placeholder="Ecris un pays"
+            [matAutocomplete]="auto"
+            formControlName="country"
+          />
+          <mat-icon matSuffix>home</mat-icon>
+          <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+            <mat-option
+              *ngFor="let option of filteredOptions | async"
+              [value]="option"
+            >
+              {{ option }}
+            </mat-option>
+          </mat-autocomplete>
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label>Ville</mat-label>
+          <input
+            type="text"
+            matInput
+            placeholder="Enter your City"
+            formControlName="city"
+          />
+          <mat-icon matSuffix> streetview</mat-icon>
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label>Rue</mat-label>
+          <input
+            type="text"
+            matInput
+            placeholder="la rue"
+            formControlName="street"
+          />
+          <mat-icon matSuffix>location_on</mat-icon>
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label>Code Postale</mat-label>
+          <input
+            type="text"
+            matInput
+            placeholder="Enter your post code"
+            formControlName="zipCode"
+          />
+          <mat-icon matSuffix> map</mat-icon>
+        </mat-form-field>
+      </div>
+
+      <div class="last">
+        <mat-label>Click to add your skills</mat-label>
+        <button type="button" class="ajouter" mat-mini-fab (click)="addSkill()">
+          <mat-icon class="add">add</mat-icon>
+        </button>
+        <ng-container formArrayName="skills">
+          <div *ngFor="let item of skills.controls; index as i">
+            <input
+              placeholder="your skills"
+              class="champs"
+              [formControlName]="i"
+            />
+            <button
+              type="text"
+              class="supprimer"
+              mat-mini-fab
+              color="accent"
+              (click)="deleteSkill(i)"
+            >
+              <mat-icon class="delete">delete</mat-icon>
+            </button>
+          </div>
+        </ng-container>
+        <button
+          class="valider"
+          type="submit"
+          mat-raised-button
+          color="primary"
+          [disabled]="userForm.invalid"
+        >
+          Valider
+        </button>
+      </div>
+    </div>
   </form>
 </section>

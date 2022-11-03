@@ -1,17 +1,76 @@
 section {
-  padding: 10px;
-  margin: auto;
-  background-color: #fff;
+  background-image: url(https://i0.wp.com/www.smartprix.com/bytes/wp-content/uploads/2018/02/wp5429982-neon-marvel-wallpapers.jpg?resize=1920%2C1080&ssl=1);
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
-  .ajouter {
-    margin-bottom: 10px;
+  form {
+    display: flex;
+    padding: 20px;
+    flex-direction: column wrap;
+    justify-content: center;
+    align-items: baseline;
+    background-color: rgba(245, 245, 245, 0.91);
+    border: 1px solid blanchedalmond;
+    color: black;
+    box-shadow: 2px 3px 30px cornflowerblue;
+    font-size: 1.05em;
+    .top {
+      display: flex;
+      .name {
+        display: flex;
+        flex-direction: column;
+        margin: 0 10px;
+      }
+      .infos {
+        display: flex;
+        flex-direction: column;
+        margin: 0 10px;
+      }
+    }
+
+    .bottom {
+      margin: 0 10px;
+      display: flex;
+      .address {
+        display: flex;
+        flex-direction: column;
+        margin: 0 10px;
+      }
+      .mdp {
+        display: flex;
+        flex-direction: column;
+        margin: 0 10px;
+      }
+      .last {
+        display: flex;
+        flex-direction: column;
+        margin: 0 10px;
+        .valider {
+          width: fit-content;
+        }
+      }
+    }
+
+    .ajouter {
+      margin: 10px;
+    }
+    .supprimer {
+      margin: 10px;
+    }
+    .champs {
+      border: 2px dashed darkblue;
+      padding: 15px;
+      margin: 5px;
+      border-radius: 10px;
+      font-weight: 600;
+    }
   }
-  .champs {
-    margin: 15px 10px;
-  }
-  .adresse {
-    .mat-form-field {
-      margin-right: 5px;
+  .mat-icon {
+    color: white;
+    &:not(.add, .delete) {
+      color: #047afa;
     }
   }
 }

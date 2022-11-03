@@ -1,21 +1,33 @@
-section{
+section {
+  padding: 10px 5px;
+  border-radius: 5px;
+  background-image: url(https://media.istockphoto.com/photos/weather-forecast-concept-picture-id531889697?b=1&k=20&m=531889697&s=170667a&w=0&h=imZl8VcPhgj-6jTFFkYGbVTFOTyQ-u93Z9WsyhMdqps=);
+  .formulaire {
+    background-color: blanchedalmond;
+    color: whitesmoke;
+    font-size: 1.2em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-flow: column wrap;
+    position: relative;
+    padding: 10px 5px;
+    border-radius: 5px;
+    filter: drop-shadow(3px 1px 5px black);
+    background-color: rgba(49, 66, 109, 0.292);
+    backdrop-filter: blur(10px);
+    input {
+      &::placeholder {
+        color: whitesmoke;
+        opacity: 1;
+      }
+    }
+  }
 
-    .formulaire{
-        background-color: bisque;
-        color: black;
-        font-size: 1.2em;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        flex-flow: column wrap;
-        position: relative;
-        padding: 15px;
-    }
-    
-    .spinner{
-        position:absolute;
-       top: 50%;
-       left: 50%;
-       transform: translate(-50%,-50%);
-    }
+  .spinner {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
 }

@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 
 import { MatDialog } from '@angular/material/dialog';
 import { WeatherModalComponent } from 'src/app/modals/weather-modal/weather-modal.component';
+import { WeatherService } from 'src/app/services/weather.service';
+import { concatMap } from 'rxjs';
 
 @Component({
   selector: 'app-weather',
@@ -11,13 +13,17 @@ import { WeatherModalComponent } from 'src/app/modals/weather-modal/weather-moda
 export class WeatherComponent implements OnInit {
 
   meteo = {
-    rue: "11 rue Paul Bert",
-    codePostale: 74100,
-    ville: "Annemasse",
-    temperature: 0
+    rue: "117 clos des Oches",
+    codePostale: 74130,
+    ville: "Bonneville",
+    temperature: null
   }
 
-  constructor(private _dialog: MatDialog) { }
+  lat!: number
+  lon!: number
+
+  constructor(private _dialog: MatDialog,
+    private _locationService: WeatherService) { }
 
   ngOnInit(): void {
     // this._meteo.getData().subscribe((meteo: any) => { this.previsions = meteo; console.log(meteo); })
@@ -43,5 +49,29 @@ export class WeatherComponent implements OnInit {
       this.meteo = responseFromModal
 
     })
+  }
+
+  onGetPosition() {
+    let now = new Date();
+    let heure = now.getHours();
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(position => {
+        this.lat = position.coords.latitude;
+        this.lon = position.coords.longitude;
+        this._locationService.getWeather(this.lon, this.lat).subscribe((value: any) => {
+          this.meteo.temperature = value.hourly.temperature_2m[heure];
+          this._locationService.getGeoLocation(value.latitude, value.longitude).subscribe((position: any) => {
+            console.log(position);
+            this.meteo.rue = position.features[0].properties.name
+            this.meteo.codePostale = position.features[0].properties.postcode
+            this.meteo.ville = position.features[0].properties.city
+         
+          })
+
+        })
+      })
+
+    }
+
   }
 }
