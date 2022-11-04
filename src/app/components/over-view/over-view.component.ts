@@ -17,7 +17,7 @@ export class OverViewComponent implements OnInit {
   ngOnInit(): void {
     this._userService.getProfile().subscribe((user: any) => {
       this.user = user
-      console.warn("user", this.user);
+      // console.warn("user", this.user);
     })
   }
 

@@ -17,7 +17,7 @@ export class ResponseModalComponent implements OnInit {
   constructor(@Inject(MAT_DIALOG_DATA) public data: User) { }
 
   ngOnInit(): void {
-    console.log(this.data);
+    // console.log(this.data);
   }
 
 

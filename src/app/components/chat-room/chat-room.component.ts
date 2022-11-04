@@ -16,10 +16,29 @@ export class ChatRoomComponent implements OnInit {
 
   // jokes!: any
 
+  // ** c'est le formControl pour mon input côté html
   msgContainer: FormControl<string> = new FormControl()
-  results: any;
-  newMessage: any;
 
+  // ** voici deux attributs type any [] qui contienent les messages reçus et envoyés, messages entre amis
+  messagesReceived: any[] = []
+  messagesSent!: any
+//! ------------------------------- fin des messages entre amis ------------------------
+
+// ** je dois initialiser un objet commme attribut pour qu'il correspondent à l'objet que je reçois pour ensuite pouvoir envoyer et recevoir les messages en DIRECT
+liveCHat = {
+  content: "",
+  date:"",
+  friendID: {
+    username:"",
+    id:""
+  },
+userID: {
+  username:"",
+  id:"",
+  _v: 0,
+  _id:"" 
+}
+}
 
   constructor(private _userService: UserService,
     private _socketService: SocketService
@@ -34,17 +53,33 @@ export class ChatRoomComponent implements OnInit {
 
     this._socketService.enterLogin()
 
-    this._socketService.getMessages()
+    this._socketService.getMessagesSent()
 
     this._userService.getCurrentUser().subscribe((response: any) => {
-      console.warn(response);
       this.dataUsers = response
     })
 
-    this._socketService.getFriendMessages().subscribe((value:any)=>{
-      console.log("value sent",value.sent);
-      this.results = value.sent
+    this._socketService.getFriendMessages().subscribe((value: any) => {
+      this.messagesSent = value.sent
+      this.messagesReceived = value.received
+      console.log("messages enchangés entre amis", value);
     })
+
+    this._socketService.getAllMessages()
+
+    this._socketService.getAllMessagesReceived().subscribe((value: any) => {
+      this.messagesReceived.push(value.content)
+      console.warn(value, "ma réponse à laquelle je souscris de getAllMessagesReceived");
+      // this.liveCHat.content = value.content
+      // this.liveCHat.userID.username = value.userID.username
+      // console.log(value.date);
+    })
+
+    this._socketService.getAllMessagesSent().subscribe((value: any) => {
+      this.messagesSent = value.content
+      console.log(value, "valeurs reçues de la souscription de getAllMessagesSent");
+    })
+
 
 
     // this._jokeService.getJokeChat().subscribe((joke: any) => {
@@ -56,15 +91,17 @@ export class ChatRoomComponent implements OnInit {
 
 
   }
+
+
   onSend() {
-    const msg = this.newMessage.value
-    this._socketService.sendMessage(this.dataUsers,msg)
-    this.newMessage.reset()
+    const msg = this.msgContainer.value
+    this._socketService.sendMessage(this.dataUsers.username, msg)
+    this.msgContainer.reset()
   }
 
   onMessagesSend(event: KeyboardEvent) {
     if (event.code === "Enter") {
-      console.log("hello");
+      this.onSend()
     }
   }
 

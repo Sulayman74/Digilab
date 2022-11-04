@@ -33,12 +33,12 @@
           <mat-list-item class="infosUser">
             <div class="firstname" mat-line>{{ people.firstName }}</div>
             <div class="name" mat-line>{{ people.lastName }}</div>
-            <div class="mail" mat-line>{{ people.email }}</div>
-            <div class="city" mat-line>
-              {{ people.city }}
+            <!-- <div class="mail" mat-line>{{ people.email }}</div> -->
+            <!-- <div class="city" mat-line>
+              {{ people|json}}
               <mat-icon>place</mat-icon>
 
-            </div>
+            </div> -->
             <mat-card-actions>
       
               <button (click)="onAddFriend(people)" type="submit" mat-mini-fab color="warn">
@@ -74,7 +74,7 @@
 
             </div>
             <mat-card-actions>
-      
+              <button (click)="onOpenDialog(ami)" mat-button color="primary" > <mat-icon>chat</mat-icon></button>
               <button id="supprimer" (click)="onDeleteFriend(i,ami)" type="submit" mat-mini-fab color="warn">
                 <mat-icon>person_remove</mat-icon>
               </button>  

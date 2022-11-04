@@ -26,20 +26,21 @@ export class UserComponent implements OnInit {
   // prenom: any;
   users!: User[]
   isChecked = false;
-  notFriend!:boolean
+  notFriend!: boolean
   // show = false
 
-  amis!:any[]
+  amis!: any[]
+  images: any[] = []
 
   constructor(private _userService: UserService,
     private _userModal: MatDialog,
-    private _snackBar:MatSnackBar) { }
+    private _snackBar: MatSnackBar) { }
 
   ngOnInit(): void {
-this._userService.getFriends().subscribe((friend:any)=> {
-this.amis = [...friend]
-console.log(this.amis);
-})
+    this._userService.getFriends().subscribe((friend: any) => {
+      this.amis = [...friend]
+      // console.log(this.amis);
+    })
 
     // this.localStorageItem = this._userService.getProfile()
     // this.user = JSON.parse(this.localStorageItem)
@@ -52,11 +53,21 @@ console.log(this.amis);
 
     this._userService.getUsersList().subscribe((value: any) => {
       this.users = value.body
-      console.log("first log", this.users);
       this.newArray = [" ", ...this.users]
+      this.users.map((user: User) => {
+        return this.images.push(user.avatar)
+      })
+      this.images.forEach((image: any) => {
+        if (image == null || undefined) {
+          image = "https://giphy.com/embed/7BW9U2cJPQZ0s"
+          
+        }
+        console.log(image);
+      })
     })
-    // this.users = this.users.filter((mySelf: any) => mySelf.username)
+   // this.users = this.users.filter((mySelf: any) => mySelf.username)
 
+//** friendmessages
 
     this.searchBar.valueChanges.subscribe((resultSearch: any) => {
       this.newArray = this.userData.filter(
@@ -66,6 +77,7 @@ console.log(this.amis);
         }
       )
     })
+
   }
 
 
@@ -86,24 +98,26 @@ console.log(this.amis);
     })
   }
 
-  onAddFriend(friend:any) {
-    console.warn("ami",friend.username);
-    this._userService.addFriend(friend.username).subscribe((isFriend:boolean)=>{
-      console.log({friendName: isFriend});
+  onAddFriend(friend: any) {
+    console.warn("ami", friend.username);
+    this._userService.addFriend(friend.username).subscribe((isFriend: boolean) => {
+      // console.log({friendName: isFriend});
       this.amis.push(friend)
+      this._snackBar.open("vous avez bien ajouté cet(te) ami(e)", "Ok")
 
     })
   }
 
-  onDeleteFriend(index:number,friend:any){
-    this._userService.deleteFriend(friend.username).subscribe((isNotFriend:boolean)=>{
+  onDeleteFriend(index: number, friend: any) {
+    this._userService.deleteFriend(friend.username).subscribe((isNotFriend: boolean) => {
       console.log(isNotFriend);
       this.notFriend = false
       //TODO méthode splice à améliorer car je dois rafraichir la page je cible bien mais probleme UX
       // this.amis = this.amis.splice(index,friend)
 
-      this.amis = this.amis.filter((value:any)=> value.username !== friend.username)
-     
+      this.amis = this.amis.filter((value: any) => value.username !== friend.username)
+      this._snackBar.open("vous avez bien supprimé cet(te) ami(e)", "Ok")
+
     })
   }
 

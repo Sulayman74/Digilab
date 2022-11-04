@@ -32,6 +32,7 @@ import { NavBarComponent } from './components/nav-bar/nav-bar.component';
 import { NgModule } from '@angular/core';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { OverViewComponent } from './components/over-view/over-view.component';
+import { PickerModule } from '@ctrl/ngx-emoji-mart';
 import { ProfileComponent } from './components/profile/profile.component';
 import { ReactiveFormsModule } from "@angular/forms";
 import { RegisterComponent } from './components/register/register.component';
@@ -96,7 +97,8 @@ const config: SocketIoConfig = { url: `${environment.API_URL}`, options: {} };
     MatSnackBarModule,
     SocketIoModule,
     SocketIoModule.forRoot(config),
-    MatSlideToggleModule
+    MatSlideToggleModule,
+    PickerModule
 
 
 

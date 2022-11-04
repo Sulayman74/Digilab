@@ -19,7 +19,7 @@ export class UserModalComponent implements OnInit {
 
   onYesClick() {
     this.dialogRef.close(this.dataUser);
-    console.warn(this.dataUser)
+    // console.warn(this.dataUser)
   }
 
   onNoClick() {

@@ -1,4 +1,4 @@
-<section *ngIf="dataUsers && dataUsers.firstName" class="container-fluid">
+<section *ngIf="dataUsers && dataUsers.username" class="container-fluid">
   <app-top-bar-chat [users]="dataUsers"></app-top-bar-chat>
 
   <div class="discussion" #scrollMe [scrollTop]="scrollMe.scrollHeight">
@@ -30,16 +30,29 @@
         </p>
       </div>
     </div> -->
-  </div>
+    <div class="gauche">
+      <div *ngFor="let message of messagesReceived">
+        <mat-chip-list *ngIf="message.userID.username == dataUsers.username">
 
+          <mat-chip> <img mat-card-avatar [src]="dataUsers.avatar" alt="">
+            {{message.content}}
+          </mat-chip>
+
+        </mat-chip-list>
+      </div>
+    </div>
+    <div class="droite">
+
+      <mat-chip-list *ngFor="let message of messagesSent">
+        <div *ngIf="message.friendID.username == dataUsers.username">
+          <p>{{message.content}}</p>
+        </div>
+      </mat-chip-list>
+    </div>
+  </div>
   <div class="msg-container">
-    <input
-      placeholder="Ecrivez un message"
-      type="text"
-      matInput
-      [formControl]="msgContainer"
-      (keypress)="onMessagesSend($event)"
-    />
+    <input placeholder="Ecrivez un message" type="text" matInput [formControl]="msgContainer"
+      (keypress)="onMessagesSend($event)" />
     <mat-icon (click)="onSend()">send</mat-icon>
   </div>
 </section>

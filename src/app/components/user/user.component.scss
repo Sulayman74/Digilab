@@ -1,4 +1,7 @@
 .utilisateurs {
+  overflow-y: hidden;
+  overflow-y: scroll;
+  height: 100vh;
   .rechercher {
     margin: 5px 0;
     font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS",
@@ -11,7 +14,8 @@
 
   .eachUser {
     padding: auto;
-    height: 15vh;
+    box-sizing: border-box;
+    height: fit-content;
     width: 100%;
     border: 1px bisque solid;
     box-shadow: 2px 2px 5px black;
@@ -30,15 +34,16 @@
     .name {
       text-transform: uppercase;
     }
-    .mail {
-      font-size: x-small;
-    }
+    // .mail {
+    //   font-size: x-small;
+    // }
 
-    .city {
-      padding: 10px 0;
-      display: flex;
-      justify-content: space-around;
-      align-items: center;
-    }
+    // .city {
+    //   padding: 10px 0;
+    //   display: flex;
+    //   justify-content: space-around;
+    //   align-items: center;
+    //   color: black;
+    // }
   }
 }

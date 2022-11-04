@@ -28,7 +28,7 @@ export class HeaderInterceptor implements HttpInterceptor {
 
     const userToken = UserService.getToken()
 
-    console.warn(request.url);
+    // console.warn(request.url);
 
     if (this.regex.test(request.url)) {
       const modifiedReq = request.clone({
