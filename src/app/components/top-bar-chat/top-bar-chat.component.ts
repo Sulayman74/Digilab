@@ -14,7 +14,7 @@ export class TopBarChatComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-console.log(this.users);
+    // console.log(this.users);
   }
 
 }

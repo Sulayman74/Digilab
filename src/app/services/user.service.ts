@@ -99,6 +99,10 @@ export class UserService {
   }
   // ---------------------------------------- token et auth---------------------------- //
 
+  setCurrentUser(user: any): void {
+    this.currentUser.next(user)
+  }
+
   getCurrentUser(): Observable<any> {
     return this.currentUser.asObservable()
   }
@@ -108,9 +112,6 @@ export class UserService {
   }
   getLoggedUser(): Observable<any> {
     return this.loggedUser.asObservable()
-  }
-  setCurrentUser(user: any): void {
-    this.currentUser.next(user)
   }
 
 

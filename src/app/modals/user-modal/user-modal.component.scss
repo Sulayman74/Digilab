@@ -1,33 +1,36 @@
 section {
   padding: 5px;
-.mat-card{
-  background: bisque;
-}
+  .mat-card {
+    background: rgba(21, 99, 167, 0.846);
+  }
   .user-infos {
-    img{
+    img {
+      height: 150px;
+      width: 150px;
       border: 1px solid rgb(204, 204, 241);
       filter: drop-shadow(2px 2px 2px black);
     }
     margin: 5px 0;
     display: flex;
-    flex-flow:column wrap;
+    flex-flow: column wrap;
     align-items: center;
     text-align: center;
-    .prenom{
+    .prenom {
       padding: 5px 0;
-      font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+      font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+        "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
       font-size: small;
+      text-transform: capitalize;
     }
-    .nom{
+    .nom {
       padding: 2px 0;
       font-size: 1.2em;
       text-transform: uppercase;
-      color: grey;
+      color: white;
     }
   }
-  .btns{
+  .btns {
     display: flex;
     justify-content: space-between;
   }
 }
-

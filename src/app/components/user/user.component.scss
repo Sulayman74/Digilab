@@ -1,4 +1,8 @@
 .utilisateurs {
+  p {
+    padding: 0;
+    margin: 0;
+  }
   overflow-y: hidden;
   overflow-y: scroll;
   height: 100vh;
@@ -10,40 +14,91 @@
     input {
       padding: 5px;
     }
-  }
 
-  .eachUser {
-    padding: auto;
-    box-sizing: border-box;
-    height: fit-content;
-    width: 100%;
-    border: 1px bisque solid;
-    box-shadow: 2px 2px 5px black;
-    border-radius: 10px;
-    margin: 5px 0;
-    background: linear-gradient(
-      to right,
-      rgba(19, 100, 167, 0.486),
-      rgb(19, 70, 155, 0.48)
-    );
+    #toggle {
+      font-size: 5em;
+      font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+    }
+  }
+  .left {
+    margin: 10px 0;
+  }
+  .user {
+    width: 290px;
+    background-color: rgba(21, 99, 167, 0.846);
+    border-top-left-radius: 10px;
+    border-bottom-right-radius: 5px;
+
+    &.right {
+      margin: 10px 0;
+      background-color: rgb(67, 177, 236);
+    }
+
+    .avatar {
+      border: 1px solid white;
+      border-radius: 50%;
+      filter: drop-shadow(2px 1px 1px white);
+      &.friend-avatar {
+        filter: drop-shadow(2px 1px 1px rgb(239, 195, 171));
+      }
+    }
     .firstname {
-      color: grey;
       text-transform: capitalize;
       font-size: small;
+      color: rgb(216, 160, 160);
+      &.second {
+        color: rgb(94, 17, 17);
+      }
     }
-    .name {
+    .lastname {
       text-transform: uppercase;
+      font-size: 0.8em;
     }
-    // .mail {
-    //   font-size: x-small;
-    // }
-
-    // .city {
-    //   padding: 10px 0;
-    //   display: flex;
-    //   justify-content: space-around;
-    //   align-items: center;
-    //   color: black;
-    // }
+    .mat-card-actions {
+      display: flex;
+      align-items: center;
+      .add-person {
+        height: 20px;
+        width: 20px;
+        background-color: white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      #supprimer {
+        height: 20px;
+        width: 20px;
+        background-color: white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      #remove {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: red;
+        font-weight: 900;
+        font-size: 15px;
+      }
+      #chat {
+        color: rgb(213, 235, 213);
+        font-size: 1.8em;
+      }
+      #second-chat {
+        color: rgb(0, 0, 0);
+        font-size: 1.8em;
+      }
+      button {
+        #add {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          color: red;
+          font-weight: 900;
+          font-size: 15px;
+        }
+      }
+    }
   }
 }

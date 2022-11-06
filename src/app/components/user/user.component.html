@@ -1,5 +1,97 @@
 <section class="utilisateurs container">
-  <!-- <div *ngIf="prenom && prenom[0]" class="mon-profil">
+  <mat-form-field class="rechercher" appearance="outline">
+    <input
+      type="text"
+      matInput
+      [formControl]="searchBar"
+      placeholder="Rechercher un ami"
+    />
+    <mat-icon matSuffix>search</mat-icon>
+  </mat-form-field>
+  <div class="slide-toggle">
+    <mat-slide-toggle color="primary" [(ngModel)]="isChecked">
+      <div id="toggle">
+        {{ isChecked ? "Everyone" : "My friends" }}
+      </div>
+    </mat-slide-toggle>
+  </div>
+
+  <!-- ** tout le monde est affiché-->
+
+  <div *ngIf="isChecked" class="card_container">
+    <mat-list class="cursor-pointer">
+      <mat-list-item class="left" *ngFor="let people of newArray">
+        <div *ngIf="people.username !== myProfile.username">
+          <mat-list-item *ngIf="newArray && newArray.length > 0" class="user">
+            <div class="avatar">
+              <img
+                mat-list-avatar
+                [src]="people.avatar"
+                alt="Profil d'avatar"
+              />
+            </div>
+            <mat-list-item class="infos-user">
+              <div mat-line class="firstname">{{ people.firstName }}</div>
+              <div mat-line class="lastname">{{ people.lastName }}</div>
+            </mat-list-item>
+
+            <mat-card-actions class="btn-up">
+              <button
+                (click)="onAddFriend(people)"
+                type="submit"
+                mat-mini-fab
+                color="warn"
+                class="add-person"
+              >
+                <mat-icon id="add">add</mat-icon>
+              </button>
+              <button (click)="onOpenDialog(people)" mat-button color="primary">
+                <mat-icon id="chat">chat</mat-icon>
+              </button>
+            </mat-card-actions>
+          </mat-list-item>
+        </div>
+      </mat-list-item>
+    </mat-list>
+  </div>
+
+  <!-- ** mes amis affichés -->
+
+  <div *ngIf="!isChecked || notFriend" class="card_container">
+    <mat-list class="cursor-pointer">
+      <mat-list-item class="user right" *ngFor="let ami of amis; let i = index">
+        <mat-list-item *ngIf="amis && amis.length > 0">
+          <div class="avatar friend-avatar">
+            <img mat-list-avatar [src]="ami.avatar" alt="Profil d'avatar" />
+          </div>
+
+          <mat-list-item class="infos-user">
+            <div mat-line class="firstname second">{{ ami.firstName }}</div>
+            <div mat-line class="lastname third">{{ ami.lastName }}</div>
+          </mat-list-item>
+          <mat-card-actions>
+            <button (click)="onOpenDialog(ami)" mat-button color="primary">
+              <mat-icon id="second-chat">chat</mat-icon>
+            </button>
+            <button
+              id="supprimer"
+              (click)="onDeleteFriend(i, ami)"
+              type="submit"
+              mat-mini-fab
+              color="warn"
+            >
+              <mat-icon id="remove">person_remove</mat-icon>
+            </button>
+          </mat-card-actions>
+        </mat-list-item>
+      </mat-list-item>
+    </mat-list>
+  </div>
+</section>
+
+<!-- ! essaie avant la database requete sur api reqres et randomuser -->
+
+<!-- <div *ngIf="prenom && prenom[0]" class="mon-profil">
 <div>
   <img mat-card-avatar [src]="user.avatar" alt="">
 </div>
@@ -9,80 +101,19 @@
 </div>
 </div>
  -->
-
-  <mat-form-field class="rechercher" appearance="outline">
-    <input type="text" matInput [formControl]="searchBar" placeholder="Rechercher un ami" />
-    <mat-icon matSuffix>search</mat-icon>
-  </mat-form-field>
-  <div class="slide-toggle">
-    <!-- <button (click)="onUsers()" mat-raised-button class="show-users"> <mat-icon>people</mat-icon> </button>
+<!-- <button (click)="onUsers()" mat-raised-button class="show-users"> <mat-icon>people</mat-icon> </button>
   <button (click)="onFriends()" mat-raised-button class="show-friends"> <mat-icon>person</mat-icon> </button> -->
 
-    <mat-slide-toggle color="warn" [(ngModel)]="isChecked"> {{isChecked? 'Everyone':'My friends'}}</mat-slide-toggle>
-
-
-  </div>
-  <div *ngIf="isChecked" class="card_container">
-    <mat-list class="cursor-pointer">
-      <mat-list-item class="eachUser" *ngFor="let people of newArray">
-        <mat-list-item
-         *ngIf="newArray && newArray.length > 0" class="user">
-          <div class="profile">
-            <img mat-list-avatar [src]="people.avatar" alt="Profil d'avatar" />
-          </div>
-          <mat-list-item class="infosUser">
-            <div class="firstname" mat-line>{{ people.firstName }}</div>
-            <div class="name" mat-line>{{ people.lastName }}</div>
-            <!-- <div class="mail" mat-line>{{ people.email }}</div> -->
-            <!-- <div class="city" mat-line>
+<!-- <div class="mail" mat-line>{{ people.email }}</div> -->
+<!-- <div class="city" mat-line>
               {{ people|json}}
               <mat-icon>place</mat-icon>
 
             </div> -->
-            <mat-card-actions>
-      
-              <button (click)="onAddFriend(people)" type="submit" mat-mini-fab color="warn">
-                <mat-icon>add</mat-icon>
-                
-              </button>
-              <button (click)="onOpenDialog(people)" mat-button color="primary" > <mat-icon>chat</mat-icon></button>
-      
-            </mat-card-actions>
-            
-          </mat-list-item>
-        </mat-list-item>
-        
-      </mat-list-item>
-    </mat-list>
-  </div>
-  <div *ngIf="!isChecked || notFriend" class="card_container">
-    <mat-list class="cursor-pointer">
-      <mat-list-item class="eachUser" *ngFor="let ami of amis;let i = index">
-        <mat-list-item
-         *ngIf="amis && amis.length > 0" class="user">
-          <div class="profile">
-            <img mat-list-avatar [src]="ami.avatar" alt="Profil d'avatar" />
-          </div>
-          <mat-list-item class="infosUser">
-           
-            <div class="firstname" mat-line>{{ ami.firstName }}</div>
-            <div class="name" mat-line>{{ ami.lastName }}</div>
-            <div class="mail" mat-line>{{ ami.email }}</div>
+
+<!-- <div class="mail" mat-line>{{ ami.email }}</div>
             <div class="city" mat-line>
               {{ ami.city }}
               <mat-icon>place</mat-icon>
 
-            </div>
-            <mat-card-actions>
-              <button (click)="onOpenDialog(ami)" mat-button color="primary" > <mat-icon>chat</mat-icon></button>
-              <button id="supprimer" (click)="onDeleteFriend(i,ami)" type="submit" mat-mini-fab color="warn">
-                <mat-icon>person_remove</mat-icon>
-              </button>  
-            </mat-card-actions>
-          </mat-list-item>
-        </mat-list-item>
-        
-      </mat-list-item>
-    </mat-list>
-  </div>
-</section>
+            </div> -->

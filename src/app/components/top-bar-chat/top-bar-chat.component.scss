@@ -1,18 +1,24 @@
-section{
-    display: flex;
-    justify-content: center;
-    width: 40vw;
-    background-color: transparent;
-    .mat-card-content{
-        border-radius: 10px;
-        padding: 5px 10px;
-        display: flex;
-        justify-content: space-around;
-        flex-direction: row-reverse;
-        align-items: center;
-        width: 15vw;
-        box-shadow: 2px 3px 5px black;
-        background-color: rgba(52, 131, 183, 0.823);
-    
+section {
+  display: flex;
+  justify-content: center;
+  width: 40vw;
+  background-color: transparent;
+  .mat-card-content {
+    p {
+      padding: 0;
+      margin: 0;
     }
+    img {
+      border: 1px white solid;
+    }
+    border-radius: 10px;
+    padding: 5px 10px;
+    display: flex;
+    justify-content: space-around;
+    flex-direction: row-reverse;
+    align-items: center;
+    width: 15vw;
+    box-shadow: 2px 3px 5px black;
+    background-color: rgba(143, 199, 236, 0.823);
+  }
 }

@@ -24,6 +24,8 @@ export class UserComponent implements OnInit {
   newArray: any[] = []
   // nom: any;
   // prenom: any;
+  isMe = true
+  myProfile!: any
   users!: User[]
   isChecked = false;
   notFriend!: boolean
@@ -37,6 +39,7 @@ export class UserComponent implements OnInit {
     private _snackBar: MatSnackBar) { }
 
   ngOnInit(): void {
+
     this._userService.getFriends().subscribe((friend: any) => {
       this.amis = [...friend]
       // console.log(this.amis);
@@ -54,23 +57,27 @@ export class UserComponent implements OnInit {
     this._userService.getUsersList().subscribe((value: any) => {
       this.users = value.body
       this.newArray = [" ", ...this.users]
+
+      this._userService.getProfile().subscribe((myProfile: any) => {
+        this.myProfile = myProfile
+      })
+
       this.users.map((user: User) => {
         return this.images.push(user.avatar)
       })
       this.images.forEach((image: any) => {
         if (image == null || undefined) {
           image = "https://giphy.com/embed/7BW9U2cJPQZ0s"
-          
+
         }
-        console.log(image);
+        // console.log(image);
       })
     })
-   // this.users = this.users.filter((mySelf: any) => mySelf.username)
+    // this.users = this.users.filter((mySelf: any) => mySelf.username)
 
-//** friendmessages
 
     this.searchBar.valueChanges.subscribe((resultSearch: any) => {
-      this.newArray = this.userData.filter(
+      this.newArray = this.users.filter(
         (user: User) => {
 
           return user.firstName.toLowerCase().includes(resultSearch.toLowerCase()) || user.lastName.toLowerCase().includes(resultSearch.toLowerCase()) || user.city?.toLowerCase().includes(resultSearch.toLowerCase())

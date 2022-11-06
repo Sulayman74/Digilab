@@ -1,9 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 
+import { ChatMessage } from './../../models/chat-message';
 import { DataService } from 'src/app/services/data.service';
 import { FormControl } from '@angular/forms';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { SocketService } from 'src/app/services/socket.service';
 import { UserService } from 'src/app/services/user.service';
+import { map } from 'rxjs';
 
 @Component({
   selector: 'app-chat-room',
@@ -12,71 +15,74 @@ import { UserService } from 'src/app/services/user.service';
 })
 export class ChatRoomComponent implements OnInit {
 
+
+  chatmessage = new ChatMessage()
   dataUsers!: any
-
+  show!: boolean
   // jokes!: any
-
+  emetteur!: any
+  destinataire!: any
   // ** c'est le formControl pour mon input côté html
   msgContainer: FormControl<string> = new FormControl()
 
   // ** voici deux attributs type any [] qui contienent les messages reçus et envoyés, messages entre amis
   messagesReceived: any[] = []
   messagesSent!: any
-//! ------------------------------- fin des messages entre amis ------------------------
+  //! ------------------------------- fin des messages entre amis ------------------------
 
-// ** je dois initialiser un objet commme attribut pour qu'il correspondent à l'objet que je reçois pour ensuite pouvoir envoyer et recevoir les messages en DIRECT
-liveCHat = {
-  content: "",
-  date:"",
-  friendID: {
-    username:"",
-    id:""
-  },
-userID: {
-  username:"",
-  id:"",
-  _v: 0,
-  _id:"" 
-}
-}
+
 
   constructor(private _userService: UserService,
-    private _socketService: SocketService
+    private _socketService: SocketService,
+    private _snackBar: MatSnackBar
   ) { }
 
   ngOnInit(): void {
-
-    this._userService.getCurrentUser().subscribe((value: any) => {
-      this.dataUsers = value;
-      console.log("valeurs chat room", value);
-    })
 
     this._socketService.enterLogin()
 
     this._socketService.getMessagesSent()
 
-    this._userService.getCurrentUser().subscribe((response: any) => {
-      this.dataUsers = response
-    })
-
-    this._socketService.getFriendMessages().subscribe((value: any) => {
-      this.messagesSent = value.sent
-      this.messagesReceived = value.received
-      console.log("messages enchangés entre amis", value);
-    })
-
     this._socketService.getAllMessages()
 
+    // this._userService.getCurrentUser().subscribe((value: any) => {
+    //   this.dataUsers = value;
+    //   this.dataUsers.username = value.username
+    //   console.log("valeurs chat room", value.username);
+    // })
+
+    this._userService.getCurrentUser().subscribe((response: any) => {
+      this.dataUsers = response
+      console.log(this.dataUsers)
+
+
+      this._socketService.getFriendMessages(this.dataUsers.username).subscribe((value: any) => {
+        this.messagesReceived = value
+
+        if (this.dataUsers.username !== value[0].userID.username) {
+          this._snackBar.open('Message reçu de : ' + value.userID.username, "Ok", { verticalPosition: "top", horizontalPosition: "right" })
+
+        }
+
+        console.log("messages enchangés entre amis", value);
+
+
+      })
+
+
+    })
+
+
     this._socketService.getAllMessagesReceived().subscribe((value: any) => {
-      this.messagesReceived.push(value.content)
+      console.log("valeur reçu", value);
+      this.messagesReceived.push(value)
+
       console.warn(value, "ma réponse à laquelle je souscris de getAllMessagesReceived");
-      // this.liveCHat.content = value.content
-      // this.liveCHat.userID.username = value.userID.username
-      // console.log(value.date);
+
     })
 
     this._socketService.getAllMessagesSent().subscribe((value: any) => {
-      this.messagesSent = value.content
+      this.messagesReceived.push(value)
       console.log(value, "valeurs reçues de la souscription de getAllMessagesSent");
     })
 
@@ -90,6 +96,9 @@ userID: {
 
 
 
+  }
+  onShow() {
+    this.show = !this.show
   }
 
 

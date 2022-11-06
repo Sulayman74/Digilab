@@ -5,37 +5,79 @@ section {
   align-items: flex-start;
   height: 100vh;
   width: 40vw;
+  #top-chat-bar {
+    margin: 10px 0;
+  }
 
   .discussion {
     display: flex;
-    align-items: center;
-    justify-content: space-between;
+    align-items: space-between;
+    flex-direction: column;
+    justify-content: center;
     width: 100%;
     height: auto;
     overflow-y: auto;
     overflow-x: hidden;
     color: black;
 
-    .chat {
-      padding: 1px 10px;
+    .gauche {
       display: flex;
-      justify-items: center;
+      align-self: flex-start;
+      .ses-messages {
+        text-transform: capitalize;
+      }
+
+      .dates {
+        font-size: 9px;
+        text-transform: lowercase;
+        color: rgb(102, 0, 0);
+        background-color: rgba(255, 255, 255, 0.093);
+        border-radius: 50%;
+      }
+      .visible {
+        visibility: collapse;
+      }
+    }
+
+    .droite {
+      display: flex;
       flex-direction: column;
-      width: 39vw;
-
-      .gauche {
-        align-self: flex-start;
+      align-items: flex-end;
+      .mes-messages {
+        text-transform: capitalize;
       }
 
-      .droite {
-        align-self: flex-end;
+      .date {
+        font-size: 9px;
+        text-transform: lowercase;
+        color: black;
+        background-color: rgba(255, 255, 255, 0.093);
+        border-radius: 50%;
       }
 
-      .mat-chip {
-        width: 100%;
+      .show {
+        visibility: hidden;
+      }
+    }
+
+    .mat-chip {
+      padding: auto;
+      margin: 10px;
+      height: auto;
+      width: fit-content;
+      line-height: auto;
+      p {
+        margin: 0 5px;
+        padding: 0 10px;
         display: flex;
-        justify-content: space-between;
+        align-items: center;
       }
+    }
+    #from-other {
+      background-color: #43b1ec;
+    }
+    #from-me {
+      background-color: #1563a7;
     }
   }
 
