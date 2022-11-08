@@ -9,16 +9,16 @@ import { UserService } from 'src/app/services/user.service';
   styleUrls: ['./nav-bar.component.scss']
 })
 export class NavBarComponent implements OnInit {
-  
-  @Input() user!: User
 
- 
+  @Input() user!: any
+
+
   constructor() { }
 
   ngOnInit(): void {
-  
-  //  console.log("datas", this.user);
-   
+
+    // console.log("datas", this.user);
+
   }
 
 

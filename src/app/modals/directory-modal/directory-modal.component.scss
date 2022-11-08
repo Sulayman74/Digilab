@@ -1,9 +1,27 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins&family=Righteous&display=swap");
+
+// ? font-family: 'Poppins', sans-serif; font-family: 'Righteous', cursive;
+
 .formulaire {
+  #contour {
+    background-color: #1563a7;
+    .titre {
+      color: white;
+    }
+  }
   .container-fluid {
     padding: 10px;
     margin: 10px 0;
     display: flex;
     flex-flow: column wrap;
-    background-color: bisque;
+    background-color: rgba(255, 255, 255, 0.268);
+    border-radius: 5px;
+    backdrop-filter: blur(40px);
+    input {
+      font-family: "Poppins", sans-serif;
+    }
+    button {
+      margin: 0 10px;
+    }
   }
 }

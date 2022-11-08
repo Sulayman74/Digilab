@@ -30,6 +30,7 @@
 ! fin des driven template forms création et implementation du pipe custsom | myAge * -->
 
 <section class="container-fluid">
+  <h1 id="title">Formulaire d'inscription</h1>
   <form [formGroup]="userForm" (ngSubmit)="onSubmit()">
     <div class="top">
       <div class="name">
@@ -183,7 +184,13 @@
 
       <div class="last">
         <mat-label>Click to add your skills</mat-label>
-        <button type="button" class="ajouter" mat-mini-fab (click)="addSkill()">
+        <button
+          type="button"
+          class="ajouter"
+          mat-mini-fab
+          color="primary"
+          (click)="addSkill()"
+        >
           <mat-icon class="add">add</mat-icon>
         </button>
         <ng-container formArrayName="skills">

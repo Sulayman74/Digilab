@@ -1,3 +1,7 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins&family=Righteous&display=swap");
+
+// ? font-family: 'Poppins', sans-serif; font-family: 'Righteous', cursive;
+
 section {
   display: flex;
   flex-direction: column;
@@ -30,9 +34,7 @@ section {
       .dates {
         font-size: 9px;
         text-transform: lowercase;
-        color: rgb(102, 0, 0);
-        background-color: rgba(255, 255, 255, 0.093);
-        border-radius: 50%;
+        color: white;
       }
       .visible {
         visibility: collapse;
@@ -50,9 +52,7 @@ section {
       .date {
         font-size: 9px;
         text-transform: lowercase;
-        color: black;
-        background-color: rgba(255, 255, 255, 0.093);
-        border-radius: 50%;
+        color: white;
       }
 
       .show {

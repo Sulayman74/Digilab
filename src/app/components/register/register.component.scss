@@ -1,10 +1,22 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins&family=Righteous&display=swap");
+
+// TODO les fonts font-family: 'Poppins', sans-serif;
+// TODO  font-family: 'Righteous', cursive;
+
 section {
   background-image: url(https://i0.wp.com/www.smartprix.com/bytes/wp-content/uploads/2018/02/wp5429982-neon-marvel-wallpapers.jpg?resize=1920%2C1080&ssl=1);
   height: 100vh;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-
+  h1 {
+    font-size: 5em;
+    font-family: "Poppins", sans-serif;
+    color: antiquewhite;
+    filter: drop-shadow(2px 1px 3px red);
+    margin-bottom: 50px;
+  }
   form {
     display: flex;
     padding: 20px;
@@ -55,6 +67,10 @@ section {
 
     .ajouter {
       margin: 10px;
+
+      .mat-icon {
+        color: plum;
+      }
     }
     .supprimer {
       margin: 10px;

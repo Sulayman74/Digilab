@@ -1,8 +1,6 @@
 <section class="formulaire">
-  <mat-card>
-    <mat-card-header class="text-primary">
-      Création d'un dossier
-    </mat-card-header>
+  <mat-card id="contour">
+    <mat-card-header class="titre"> Création d'un dossier </mat-card-header>
     <form
       class="container-fluid"
       (ngSubmit)="onSubmit()"
@@ -36,10 +34,16 @@
         /> -->
         <textarea matInput formControlName="description"></textarea>
       </mat-form-field>
-    <mat-card-actions align="end">
-      <button type="submit" mat-raised-button color="accent" [disabled]="directoryForm.invalid">Valider</button>
-    </mat-card-actions>
-  </form>
-
+      <mat-card-actions align="end">
+        <button
+          type="submit"
+          mat-raised-button
+          color="accent"
+          [disabled]="directoryForm.invalid"
+        >
+          Valider
+        </button>
+      </mat-card-actions>
+    </form>
   </mat-card>
 </section>

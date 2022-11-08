@@ -1,7 +1,11 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins&family=Righteous&display=swap");
+
+// ? font-family: 'Poppins', sans-serif; font-family: 'Righteous', cursive;
+
 section {
   padding: 5px;
   .mat-card {
-    background: rgba(21, 99, 167, 0.846);
+    background: rgba(21, 99, 167, 0.348);
   }
   .user-infos {
     img {
@@ -17,13 +21,13 @@ section {
     text-align: center;
     .prenom {
       padding: 5px 0;
-      font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
-        "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+      font-family: "Poppins", sans-serif;
       font-size: small;
       text-transform: capitalize;
     }
     .nom {
       padding: 2px 0;
+      font-family: "Righteous", cursive;
       font-size: 1.2em;
       text-transform: uppercase;
       color: white;

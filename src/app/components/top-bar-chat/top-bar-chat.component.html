@@ -1,7 +1,7 @@
 <section class="container">
   <mat-card-content *ngIf="users && users.firstName">
+    <p>Vous discutez avec :</p>
     <p>{{ users.firstName }}</p>
     <p>{{ users.lastName }}</p>
-    <img mat-card-avatar [src]="users.avatar" alt="" />
   </mat-card-content>
 </section>

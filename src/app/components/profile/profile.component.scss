@@ -1,24 +1,44 @@
-section {
+@import url("https://fonts.googleapis.com/css2?family=Poppins&family=Righteous&display=swap");
+
+// ? font-family: 'Poppins', sans-serif; font-family: 'Righteous', cursive;
+
+.sous-titre {
   display: flex;
-  height: 30vh;
-  width: 100%;
-  justify-content: space-around;
   flex-direction: column;
+  justify-content: space-evenly;
   align-items: center;
-  .avatar {
-    img {
-      border-radius: 50%;
-      border: 1px solid black;
-      filter: drop-shadow(2px 3px 3px rgb(48, 113, 211));
-    }
+  h1 {
+    font-family: "Poppins", sans-serif;
+    color: whitesmoke;
   }
-  .infosUser {
-    .nom {
-      font-size: 1.2em;
-      font-weight: 600;
-    }
-    .prenom {
-      text-align: center;
+  img {
+    border-radius: 50%;
+    border: 1px solid white;
+  }
+}
+p {
+  margin: 0;
+  padding: 0;
+  line-height: 30px;
+}
+.infos-utilisateur {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  #details {
+    color: white;
+    background: rgba(128, 128, 128, 0.556);
+    backdrop-filter: blur(10px);
+    font-family: "Poppins", sans-serif;
+    border-radius: 5px;
+    width: 30%;
+    height: 50%;
+    span {
+      &:nth-child(1) {
+        font-family: "Righteous", cursive;
+        margin-right: 10px;
+        color: bisque;
+      }
     }
   }
 }

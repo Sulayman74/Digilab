@@ -1,13 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
+import { concatMap, map } from 'rxjs';
 
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MyAgePipe } from 'src/app/my-age.pipe';
+import { SocketService } from 'src/app/services/socket.service';
 import { User } from './../../models/user';
 import { UserModalComponent } from 'src/app/modals/user-modal/user-modal.component';
 import { UserService } from 'src/app/services/user.service';
-import { map } from 'rxjs';
 
 @Component({
   selector: 'app-user',
@@ -33,17 +34,52 @@ export class UserComponent implements OnInit {
 
   amis!: any[]
   images: any[] = []
-
+  usersOnline: any;
+  test!: any
   constructor(private _userService: UserService,
     private _userModal: MatDialog,
-    private _snackBar: MatSnackBar) { }
+    private _snackBar: MatSnackBar,
+    private _socketService: SocketService) { }
 
   ngOnInit(): void {
+    this._socketService.onLineUsers()
 
     this._userService.getFriends().subscribe((friend: any) => {
       this.amis = [...friend]
-      // console.log(this.amis);
+
     })
+
+    // this._socketService.getOnlineUsers().pipe(concatMap()
+
+
+    this._socketService.getOnlineUsers().subscribe((value: any) => {
+      this.usersOnline = value
+      // console.log(this.usersOnline);
+
+      // console.warn("ils sont en ligne", this.usersOnline);
+      this.newArray.forEach((ami: any) => {
+        console.log(ami.avatar);
+        if (this.usersOnline.includes(ami.username)) {
+          ami.online = true
+        } else {
+          ami.online = false
+        }
+        this.newArray = this.newArray.sort((a: any, b: any) => {
+          return b.online - a.online
+        })
+      })
+
+      this.amis.forEach((ami: any) => {
+        if (this.usersOnline.includes(ami.username)) {
+          ami.online = true
+        } else {
+          ami.online = false
+        }
+        console.log(ami);
+      })
+
+    })
+
 
     // this.localStorageItem = this._userService.getProfile()
     // this.user = JSON.parse(this.localStorageItem)
@@ -56,28 +92,28 @@ export class UserComponent implements OnInit {
 
     this._userService.getUsersList().subscribe((value: any) => {
       this.users = value.body
-      this.newArray = [" ", ...this.users]
+      this.newArray = [...this.users]
+
 
       this._userService.getProfile().subscribe((myProfile: any) => {
         this.myProfile = myProfile
+        this.newArray = this.newArray.filter((user: any) => {
+          return user.username != this.myProfile.username
+        })
       })
+      console.log("Je suis la", this.newArray);
 
-      this.users.map((user: User) => {
-        return this.images.push(user.avatar)
-      })
-      this.images.forEach((image: any) => {
-        if (image == null || undefined) {
-          image = "https://giphy.com/embed/7BW9U2cJPQZ0s"
-
-        }
-        // console.log(image);
-      })
     })
-    // this.users = this.users.filter((mySelf: any) => mySelf.username)
 
 
     this.searchBar.valueChanges.subscribe((resultSearch: any) => {
       this.newArray = this.users.filter(
+        (user: User) => {
+
+          return user.firstName.toLowerCase().includes(resultSearch.toLowerCase()) || user.lastName.toLowerCase().includes(resultSearch.toLowerCase()) || user.city?.toLowerCase().includes(resultSearch.toLowerCase())
+        }
+      )
+      this.amis = this.users.filter(
         (user: User) => {
 
           return user.firstName.toLowerCase().includes(resultSearch.toLowerCase()) || user.lastName.toLowerCase().includes(resultSearch.toLowerCase()) || user.city?.toLowerCase().includes(resultSearch.toLowerCase())
@@ -108,29 +144,25 @@ export class UserComponent implements OnInit {
   onAddFriend(friend: any) {
     console.warn("ami", friend.username);
     this._userService.addFriend(friend.username).subscribe((isFriend: boolean) => {
-      // console.log({friendName: isFriend});
+      // console.log(isFriend);
+      // console.log(friend);
       this.amis.push(friend)
-      this._snackBar.open("vous avez bien ajouté cet(te) ami(e)", "Ok")
+      this._snackBar.open(`Vous avez bien ajouté ${friend.username} en tant qu'ami(e)`, "Ok")
 
     })
   }
 
   onDeleteFriend(index: number, friend: any) {
     this._userService.deleteFriend(friend.username).subscribe((isNotFriend: boolean) => {
-      console.log(isNotFriend);
+      // console.log(isNotFriend);
       this.notFriend = false
       //TODO méthode splice à améliorer car je dois rafraichir la page je cible bien mais probleme UX
       // this.amis = this.amis.splice(index,friend)
 
       this.amis = this.amis.filter((value: any) => value.username !== friend.username)
-      this._snackBar.open("vous avez bien supprimé cet(te) ami(e)", "Ok")
+      this._snackBar.open(`Vous avez bien supprimé ${friend.username}`, "Ok")
 
     })
   }
-
-
-  // onShow() {
-  //   this.show = !this.show
-  // }
 
 }

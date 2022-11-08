@@ -6,7 +6,7 @@
       [formControl]="searchBar"
       placeholder="Rechercher un ami"
     />
-    <mat-icon matSuffix>search</mat-icon>
+    <mat-icon class="search" matSuffix>search</mat-icon>
   </mat-form-field>
   <div class="slide-toggle">
     <mat-slide-toggle color="primary" [(ngModel)]="isChecked">
@@ -21,36 +21,35 @@
   <div *ngIf="isChecked" class="card_container">
     <mat-list class="cursor-pointer">
       <mat-list-item class="left" *ngFor="let people of newArray">
-        <div *ngIf="people.username !== myProfile.username">
-          <mat-list-item *ngIf="newArray && newArray.length > 0" class="user">
-            <div class="avatar">
-              <img
-                mat-list-avatar
-                [src]="people.avatar"
-                alt="Profil d'avatar"
-              />
+        <mat-list-item *ngIf="newArray && newArray.length > 0" class="user">
+          <div class="avatar">
+            <img mat-card-avatar [src]="people.avatar" />
+          </div>
+          <mat-list-item class="infos-user">
+            <div mat-line class="firstname">
+              {{ people.firstName }}
             </div>
-            <mat-list-item class="infos-user">
-              <div mat-line class="firstname">{{ people.firstName }}</div>
-              <div mat-line class="lastname">{{ people.lastName }}</div>
-            </mat-list-item>
-
-            <mat-card-actions class="btn-up">
-              <button
-                (click)="onAddFriend(people)"
-                type="submit"
-                mat-mini-fab
-                color="warn"
-                class="add-person"
-              >
-                <mat-icon id="add">add</mat-icon>
-              </button>
-              <button (click)="onOpenDialog(people)" mat-button color="primary">
-                <mat-icon id="chat">chat</mat-icon>
-              </button>
-            </mat-card-actions>
+            <div mat-line class="lastname">{{ people.lastName }}</div>
           </mat-list-item>
-        </div>
+
+          <div
+            [ngClass]="{ 'on-line': people.online, 'off-line': !people.online }"
+          ></div>
+          <mat-card-actions class="btn-up">
+            <button
+              (click)="onAddFriend(people)"
+              type="submit"
+              mat-mini-fab
+              color="warn"
+              class="add-person"
+            >
+              <mat-icon id="add">add</mat-icon>
+            </button>
+            <button (click)="onOpenDialog(people)" mat-button color="primary">
+              <mat-icon id="chat">chat</mat-icon>
+            </button>
+          </mat-card-actions>
+        </mat-list-item>
       </mat-list-item>
     </mat-list>
   </div>
@@ -66,8 +65,16 @@
           </div>
 
           <mat-list-item class="infos-user">
-            <div mat-line class="firstname second">{{ ami.firstName }}</div>
+            <div mat-line class="firstname second">
+              {{ ami.firstName }}
+            </div>
             <div mat-line class="lastname third">{{ ami.lastName }}</div>
+            <div
+              [ngClass]="{
+                'on-line': ami.online,
+                'off-line': !ami.online
+              }"
+            ></div>
           </mat-list-item>
           <mat-card-actions>
             <button (click)="onOpenDialog(ami)" mat-button color="primary">

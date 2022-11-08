@@ -1,13 +1,52 @@
 <section class="container">
-  <p class="avatar">
-    <img mat-card-sm-image [src]="profileUser.avatar" alt="" />
-  </p>
-  <div class="infosUser">
-    <p class="nom">
-      {{ profileUser.lastName }}
-    </p>
-    <p class="prenom">
-      {{ profileUser.firstName }}
-    </p>
+  <div class="sous-titre">
+    <h1>Vos informations de profil</h1>
+    <img mat-card-lg-image [src]="profileUser.avatar" alt="image de profil" />
   </div>
+
+  <mat-list class="infos-utilisateur">
+    <mat-list-item id="details">
+      <p matLine>
+        <span>Votre nom :</span>
+        <span>{{ profileUser.lastName }} </span>
+      </p>
+      <p matLine>
+        <span>Votre prénom :</span>
+        <span>{{ profileUser.firstName }} </span>
+      </p>
+      <p matLine>
+        <span>Votre pseudo :</span>
+        <span>{{ profileUser.username }} </span>
+      </p>
+      <p matLine>
+        <span>Votre numéro de tel :</span>
+        <span>{{ profileUser.phoneNumber }}</span>
+      </p>
+      <p matLine>
+        <span>Votre e-mail :</span>
+        <span>{{ profileUser.email }} </span>
+      </p>
+
+      <p matLine>
+        <span> Votre rue :</span>
+        <span>{{ profileUser.street }} </span>
+      </p>
+      <p matLine>
+        <span>Votre ville :</span>
+        <span>{{ profileUser.city }} </span>
+      </p>
+      <p matLine>
+        <span>Votre code postale :</span>
+        <span>{{ profileUser.zipCode }} </span>
+      </p>
+      <p matLine>
+        <span>Votre pays :</span>
+        <span>{{ profileUser.country }} </span>
+      </p>
+      <p matLine>
+        <span>Vos skills:</span>
+        <span>{{ profileUser.skills }} </span>
+      </p>
+    </mat-list-item>
+  </mat-list>
 </section>

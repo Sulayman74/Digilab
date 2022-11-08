@@ -1,9 +1,9 @@
-<section class="bar">
-<div class="userInfos">
-  <div>
-    <!-- <img [src]="user." alt=""> -->
+<mat-card class="bar">
+  <div class="user-infos" *ngIf="user && user.avatar">
+    <h4>Vous êtes bien en ligne</h4>
+    <div id="user">
+      <div>{{ user.username }}</div>
+      <img mat-card-avatar [src]="user.avatar" alt="" />
+    </div>
   </div>
-  <div></div>
-  <div></div>
-</div>
-</section>
+</mat-card>

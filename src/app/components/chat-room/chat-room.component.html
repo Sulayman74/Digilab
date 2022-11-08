@@ -21,6 +21,7 @@
         <mat-chip-list>
           <div *ngIf="message.userID.username !== dataUsers.username">
             <mat-chip (click)="onShow()" id="from-me" selected>
+              <img mat-card-avatar [src]="monProfil.avatar" alt="" />
               <p class="mes-messages">
                 {{ message.content }}
               </p>

@@ -18,6 +18,7 @@ export class ChatRoomComponent implements OnInit {
 
   chatmessage = new ChatMessage()
   dataUsers!: any
+  monProfil!: any
   show!: boolean
   // jokes!: any
   emetteur!: any
@@ -28,6 +29,8 @@ export class ChatRoomComponent implements OnInit {
   // ** voici deux attributs type any [] qui contienent les messages reçus et envoyés, messages entre amis
   messagesReceived: any[] = []
   messagesSent!: any
+
+  usersOnline: any[] = []
   //! ------------------------------- fin des messages entre amis ------------------------
 
 
@@ -39,11 +42,11 @@ export class ChatRoomComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this._socketService.enterLogin()
 
-    this._socketService.getMessagesSent()
-
-    this._socketService.getAllMessages()
+    this._userService.getProfile().subscribe((monProfil: any) => {
+      this.monProfil = monProfil
+      // console.log(monProfil);
+    })
 
     // this._userService.getCurrentUser().subscribe((value: any) => {
     //   this.dataUsers = value;
@@ -53,29 +56,36 @@ export class ChatRoomComponent implements OnInit {
 
     this._userService.getCurrentUser().subscribe((response: any) => {
       this.dataUsers = response
-      console.log(this.dataUsers)
+      // console.log(this.dataUsers)
 
 
-      this._socketService.getFriendMessages(this.dataUsers.username).subscribe((value: any) => {
-        this.messagesReceived = value
+      this._socketService.getFriendMessages(this.dataUsers.username)
+        .subscribe((value: any) => {
+          this.messagesReceived = value
 
-        if (this.dataUsers.username !== value[0].userID.username) {
-          this._snackBar.open('Message reçu de : ' + value.userID.username, "Ok", { verticalPosition: "top", horizontalPosition: "right" })
-
-        }
-
-        console.log("messages enchangés entre amis", value);
+          console.log("messages enchangés entre amis", value);
 
 
-      })
+        })
 
 
     })
 
 
     this._socketService.getAllMessagesReceived().subscribe((value: any) => {
-      console.log("valeur reçu", value);
-      this.messagesReceived.push(value)
+      console.log("valeur reçu", value.userID.username);
+
+      if (this.dataUsers.username !== value.userID.username) {
+        this._snackBar.open
+          ('Message reçu de : ' + value.userID.username, "Ok",
+            { verticalPosition: "top", horizontalPosition: "right" })
+
+      }
+
+      if (this.dataUsers.username == value.userID.username) {
+        this.messagesReceived.push(value)
+      }
+
 
       console.warn(value, "ma réponse à laquelle je souscris de getAllMessagesReceived");
 

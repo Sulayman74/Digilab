@@ -8,17 +8,13 @@ section {
       padding: 0;
       margin: 0;
     }
-    img {
-      border: 1px white solid;
-    }
     border-radius: 10px;
     padding: 5px 10px;
     display: flex;
     justify-content: space-around;
-    flex-direction: row-reverse;
     align-items: center;
-    width: 15vw;
+    width: 50%;
     box-shadow: 2px 3px 5px black;
-    background-color: rgba(143, 199, 236, 0.823);
+    background-color: rgba(143, 199, 236, 0.649);
   }
 }

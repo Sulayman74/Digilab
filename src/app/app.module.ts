@@ -15,6 +15,7 @@ import { FormsModule } from "@angular/forms";
 import { HttpClientModule } from "@angular/common/http";
 import { LoginComponent } from './components/login/login.component';
 import { MatAutocompleteModule } from "@angular/material/autocomplete";
+import { MatBadgeModule } from '@angular/material/badge';
 import { MatButtonModule } from "@angular/material/button";
 import { MatCardModule } from "@angular/material/card";
 import { MatChipsModule } from '@angular/material/chips';
@@ -25,7 +26,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatListModule } from '@angular/material/list';
 import { MatProgressSpinnerModule } from "@angular/material/progress-spinner";
 import { MatSidenavModule } from '@angular/material/sidenav';
-import {MatSlideToggleModule} from '@angular/material/slide-toggle';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatSnackBarModule } from "@angular/material/snack-bar";
 import { MyAgePipe } from './my-age.pipe';
 import { NavBarComponent } from './components/nav-bar/nav-bar.component';
@@ -98,7 +99,8 @@ const config: SocketIoConfig = { url: `${environment.API_URL}`, options: {} };
     SocketIoModule,
     SocketIoModule.forRoot(config),
     MatSlideToggleModule,
-    PickerModule
+    PickerModule,
+    MatBadgeModule
 
 
 

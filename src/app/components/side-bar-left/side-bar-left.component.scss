@@ -1,3 +1,7 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins&family=Righteous&display=swap");
+
+// ** font-family: 'Poppins', sans-serif;font-family: 'Righteous', cursive;
+
 .left-side {
   box-sizing: border-box;
   background-color: rgb(19, 100, 167);
@@ -15,6 +19,11 @@
     font-size: 1.1em;
     text-align: center;
     font-family: Georgia, "Times New Roman", Times, serif;
+    .label {
+      font-family: "Poppins", sans-serif;
+      font-size: smaller;
+      color: black;
+    }
     transition: all 0.3s ease-in;
     transform-origin: left;
     .mat-icon {
@@ -26,8 +35,7 @@
     }
 
     &:hover {
-      transform: scale(1.05);
-      color: whitesmoke;
+      transform: scale(1.15);
     }
   }
 }

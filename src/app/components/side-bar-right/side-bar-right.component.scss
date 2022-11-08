@@ -1,4 +1,8 @@
-.right-side{
+@import url("https://fonts.googleapis.com/css2?family=Poppins&family=Righteous&display=swap");
+
+// ** font-family: 'Poppins', sans-serif;font-family: 'Righteous', cursive;
+
+.right-side {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -8,7 +12,21 @@
   padding: 10px;
   height: 100vh;
   width: 100%;
-  .mat-icon{
+  .log-out {
+    font-family: "Poppins", sans-serif;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    color: bisque;
+    font-size: smaller;
+  }
+  .mat-icon {
+    color: black;
     cursor: pointer;
+    transition: all 0.3s ease;
+    &:hover {
+      color: red;
+      transform: scale(1.3);
+    }
   }
 }

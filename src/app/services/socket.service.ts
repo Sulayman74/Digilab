@@ -11,10 +11,11 @@ import { environment } from 'src/environments/environment';
 })
 export class SocketService {
 
-  allMessagesReceived = new Subject<any>()
+  allMessagesReceived$ = new Subject<any>()
   // allMessagesReceived = new BehaviorSubject([])
-  allMessagesSent = new Subject<any>()
+  allMessagesSent$ = new Subject<any>()
   // allMessagesSent = new BehaviorSubject([])
+  usersOnline$ = new Subject<any>()
 
 
   constructor(private _socket: Socket,
@@ -24,6 +25,16 @@ export class SocketService {
   enterLogin() {
     this._socket.emit('login', { token: UserService.getToken() })
   }
+  onLineUsers() {
+    this._socket.on('users list', (value: any) => {
+      this.usersOnline$.next(value)
+    })
+  }
+
+  getOnlineUsers(): Observable<any> {
+    return this.usersOnline$.asObservable()
+  }
+
 
 
   // ** pour envoyer des messages j'utilise cette méthode
@@ -37,12 +48,12 @@ export class SocketService {
   getMessagesSent() {
     this._socket.on('friend message sent',
       (data: any) => {
-        this.allMessagesSent.next(data)
+        this.allMessagesSent$.next(data)
       })
   }
 
   getAllMessagesSent(): Observable<any> {
-    return this.allMessagesSent.asObservable()
+    return this.allMessagesSent$.asObservable()
   }
 
   getFriendMessages(currentUsername: string): Observable<any> {
@@ -52,11 +63,11 @@ export class SocketService {
   getAllMessages() {
     this._socket.on('friend message', (value: any) => {
       // console.log(value);
-      this.allMessagesReceived.next(value)
+      this.allMessagesReceived$.next(value)
     })
   }
   getAllMessagesReceived(): Observable<any> {
-    return this.allMessagesReceived.asObservable()
+    return this.allMessagesReceived$.asObservable()
   }
 
 
