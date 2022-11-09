@@ -1,33 +1,16 @@
 import { RouterModule, Routes } from '@angular/router';
 
-import { AuthGuard } from './guards/auth.guard';
-import { ChatComponent } from './components/chat/chat.component';
-import { DirectoryComponent } from './components/directory/directory.component';
-import { FinderComponent } from './components/finder/finder.component';
-import { LoginComponent } from './components/login/login.component';
 import { NgModule } from '@angular/core';
-import { OverViewComponent } from './components/over-view/over-view.component';
-import { ProfileComponent } from './components/profile/profile.component';
-import { RegisterComponent } from './components/register/register.component';
 
 const routes: Routes = [
+  { path: '', redirectTo: 'login', pathMatch: 'full' },
 
-  { path: "", component: LoginComponent },
-  { path: "login", component: LoginComponent },
-  { path: "register", component: RegisterComponent },
-  { path: "finder", component: FinderComponent, canActivate:[AuthGuard] },
-  {
-    path: "overview", component: OverViewComponent,
-    canActivate:[AuthGuard],
-    children: [
-      { path: "directory", component: DirectoryComponent, canActivate:[AuthGuard] },
-      { path: "chat", component: ChatComponent, canActivate:[AuthGuard] },
-      { path: "profile", component: ProfileComponent, canActivate:[AuthGuard] },
-      
-    ]
-  },
-
-];
+  { path: "login", loadChildren: () => import('./modules/login/login.module').then(m => m.LoginModule) },
+  { path: "register", loadChildren: () => import('./modules/register/register.module').then(m => m.RegisterModule) },
+  { path: "finder", loadChildren: () => import('./modules/finder/finder.module').then(m => m.FinderModule) },
+  { path: "overview", loadChildren: () => import('./modules/overview/overview.module').then(m => m.OverviewModule) },
+  { path: "directory", loadChildren: () => import('./modules/directory/directory.module').then(m => m.DirectoryModule) }
+]
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

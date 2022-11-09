@@ -1,6 +1,7 @@
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { CommonModule } from '@angular/common';
+import { DirectoryModalComponent } from 'src/app/modals/directory-modal/directory-modal.component';
 import { HttpClientModule } from '@angular/common/http';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatBadgeModule } from '@angular/material/badge';
@@ -17,15 +18,26 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MyAgePipe } from 'src/app/my-age.pipe';
 import { NgModule } from '@angular/core';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { PickerModule } from '@ctrl/ngx-emoji-mart';
+import { ResponseModalComponent } from 'src/app/modals/response-modal/response-modal.component';
+import { RouterModule } from '@angular/router';
+import { UserModalComponent } from 'src/app/modals/user-modal/user-modal.component';
+import { WeatherComponent } from 'src/app/components/weather/weather.component';
+import { WeatherModalComponent } from 'src/app/modals/weather-modal/weather-modal.component';
 
 @NgModule({
-  declarations: [],
+  declarations: [WeatherComponent,
+    WeatherModalComponent,
+    UserModalComponent,
+    ResponseModalComponent,
+    MyAgePipe,
+    DirectoryModalComponent],
   imports: [
-    CommonModule
-  ],
-  exports: [FormsModule,
+    CommonModule,
+    FormsModule,
     HttpClientModule,
     MatListModule,
     MatIconModule,
@@ -43,7 +55,37 @@ import { PickerModule } from '@ctrl/ngx-emoji-mart';
     MatSnackBarModule,
     MatSlideToggleModule,
     PickerModule,
-    MatBadgeModule
+    MatBadgeModule,
+    RouterModule
+  ],
+  exports: [
+    CommonModule,
+    FormsModule,
+    HttpClientModule,
+    MatListModule,
+    MatIconModule,
+    MatCardModule,
+    MatGridListModule,
+    MatInputModule,
+    MatFormFieldModule,
+    ReactiveFormsModule,
+    MatAutocompleteModule,
+    MatButtonModule,
+    MatDialogModule,
+    MatProgressSpinnerModule,
+    MatSidenavModule,
+    MatChipsModule,
+    MatSnackBarModule,
+    MatSlideToggleModule,
+    PickerModule,
+    MatBadgeModule,
+    WeatherModalComponent,
+    WeatherComponent,
+    UserModalComponent,
+    ResponseModalComponent,
+    MyAgePipe,
+    DirectoryModalComponent,
+    RouterModule
   ]
 
 })
