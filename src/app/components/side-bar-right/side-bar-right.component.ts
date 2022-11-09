@@ -17,6 +17,5 @@ export class SideBarRightComponent implements OnInit {
   }
   onLogout() {
     this._tokenService.clearToken()
-    throw new Error('Method not implemented.');
   }
 }

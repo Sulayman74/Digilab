@@ -52,11 +52,10 @@ export class RegisterComponent implements OnInit {
     private _fb: FormBuilder,
     private _popUp: MatDialog,
     private _snackBar: MatSnackBar,
-    private _route: Router
   ) { }
 
   ngOnInit(): void {
-    this.user.avatar = "assets/images/Alae.JPG"
+    this.user.avatar = "https://i.giphy.com/media/wzWxTUiXRQDYc/giphy.webp"
     /**
      * @param  {any} .subscribe((value
      */

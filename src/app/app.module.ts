@@ -17,13 +17,13 @@ const config: SocketIoConfig = { url: `${environment.API_URL}`, options: {} };
     AppComponent
   ],
   imports: [
-    BrowserModule,
     AppRoutingModule,
+    SharedModule,
+    BrowserModule,
     BrowserAnimationsModule,
     NgbModule,
     SocketIoModule,
     SocketIoModule.forRoot(config),
-    SharedModule
   ],
   providers: [TokenInterceptorProvider],
   bootstrap: [AppComponent]

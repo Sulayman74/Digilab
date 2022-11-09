@@ -1,9 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import { Router } from '@angular/router';
-import { SocketService } from 'src/app/services/socket.service';
-import { Subject } from 'rxjs';
 import { User } from 'src/app/models/user';
 import { UserService } from 'src/app/services/user.service';
 
@@ -24,12 +22,11 @@ export class LoginComponent implements OnInit {
   constructor(
     private _userService: UserService,
     private _fb: FormBuilder,
-    private _route: Router,
-    private _socketService:SocketService) { }
+    private _route: Router) { }
 
   ngOnInit(): void {
 
-    
+
 
 
     this.loginForm = this._fb.group({
@@ -56,9 +53,9 @@ export class LoginComponent implements OnInit {
     this._userService.postUserLogged(loggedUser).subscribe((results: User) => {
 
       if (results) {
-       
+
         this._route.navigate(['overview'])
-localStorage.setItem('token',results.token)
+        localStorage.setItem('token', results.token)
       }
 
 
