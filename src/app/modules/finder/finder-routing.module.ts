@@ -1,7 +1,10 @@
-import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-const routes: Routes = [];
+import { AuthGuard } from 'src/app/guards/auth.guard';
+import { FinderComponent } from 'src/app/components/finder/finder.component';
+import { NgModule } from '@angular/core';
+
+const routes: Routes = [{ path: "", component: FinderComponent, canActivate: [AuthGuard] }];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
