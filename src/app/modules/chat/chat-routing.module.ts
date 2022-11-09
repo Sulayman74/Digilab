@@ -6,11 +6,14 @@ import { ChatRoomComponent } from 'src/app/components/chat-room/chat-room.compon
 import { NgModule } from '@angular/core';
 import { TopBarChatComponent } from 'src/app/components/top-bar-chat/top-bar-chat.component';
 import { UserComponent } from 'src/app/components/user/user.component';
+import { UserResolver } from './../../resolvers/user.resolver';
 
 const routes: Routes = [{
-  path: "", component: ChatComponent, canActivate: [AuthGuard], children: [
+
+  path: "", component: ChatComponent, canActivate: [AuthGuard],
+  children: [
     { path: "chatroom", component: ChatRoomComponent, canActivate: [AuthGuard] },
-    { path: "user", component: UserComponent },
+    { path: "user", component: UserComponent, resolve: { user: UserResolver } },
     { path: "topchatbar", component: TopBarChatComponent }
   ]
 }];

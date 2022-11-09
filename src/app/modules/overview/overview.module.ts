@@ -7,11 +7,13 @@ import { SideBarLeftComponent } from 'src/app/components/side-bar-left/side-bar-
 import { SideBarRightComponent } from 'src/app/components/side-bar-right/side-bar-right.component';
 
 @NgModule({
-  declarations: [OverViewComponent,
+  declarations: [
+    OverViewComponent,
     SideBarLeftComponent,
     NavBarComponent,
     SideBarRightComponent,
-    ProfileComponent],
+    ProfileComponent
+  ],
   imports: [
     SharedModule,
 

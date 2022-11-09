@@ -2,9 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { concatMap, map } from 'rxjs';
 
+import { ActivatedRoute } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { MyAgePipe } from 'src/app/my-age.pipe';
 import { SocketService } from 'src/app/services/socket.service';
 import { User } from './../../models/user';
 import { UserModalComponent } from 'src/app/modals/user-modal/user-modal.component';
@@ -39,11 +39,14 @@ export class UserComponent implements OnInit {
   constructor(private _userService: UserService,
     private _userModal: MatDialog,
     private _snackBar: MatSnackBar,
-    private _socketService: SocketService) { }
+    private _socketService: SocketService,
+    private _activatedRoute: ActivatedRoute) { }
 
   ngOnInit(): void {
     this._socketService.onLineUsers()
-
+    this._activatedRoute.data.subscribe(({ user }) => {
+      this.users = user
+    })
     this._userService.getFriends().subscribe((friend: any) => {
       this.amis = [...friend]
 

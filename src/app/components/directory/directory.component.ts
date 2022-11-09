@@ -1,10 +1,10 @@
 // ** Component où je vais pouvoir créer des dossiers avec un modal qui apparait au click
 
-
-import { MAT_DIALOG_DATA, MatDialog } from '@angular/material/dialog';
 import { Component, Inject, OnInit } from '@angular/core';
-import { UserService } from 'src/app/services/user.service';
+
 import { DirectoryModalComponent } from 'src/app/modals/directory-modal/directory-modal.component';
+import { MatDialog } from '@angular/material/dialog';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-directory',
@@ -13,11 +13,10 @@ import { DirectoryModalComponent } from 'src/app/modals/directory-modal/director
 })
 export class DirectoryComponent implements OnInit {
 
-directories:any[] =[]
+  directories: any[] = []
 
 
-  constructor(private _user: UserService,
-    private _dialog: MatDialog) { }
+  constructor(private _dialog: MatDialog) { }
 
   ngOnInit(): void {
 
@@ -25,13 +24,13 @@ directories:any[] =[]
 
 
 
-   addNewDir() :void {
+  addNewDir(): void {
     const dialogRef = this._dialog.open(DirectoryModalComponent)
     dialogRef
       .afterClosed()
       .subscribe((responseFromModal: any) => {
         console.warn('response de la modal lors de la cloture ', responseFromModal);
-        this.directories=[responseFromModal, ...this.directories]
+        this.directories = [responseFromModal, ...this.directories]
 
       })
   }

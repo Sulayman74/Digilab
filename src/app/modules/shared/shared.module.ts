@@ -20,7 +20,6 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MyAgePipe } from 'src/app/my-age.pipe';
 import { NgModule } from '@angular/core';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { PickerModule } from '@ctrl/ngx-emoji-mart';
 import { ResponseModalComponent } from 'src/app/modals/response-modal/response-modal.component';
 import { RouterModule } from '@angular/router';
@@ -60,32 +59,32 @@ import { WeatherModalComponent } from 'src/app/modals/weather-modal/weather-moda
   ],
   exports: [
     CommonModule,
+    DirectoryModalComponent,
     FormsModule,
     HttpClientModule,
-    MatListModule,
-    MatIconModule,
-    MatCardModule,
-    MatGridListModule,
-    MatInputModule,
-    MatFormFieldModule,
-    ReactiveFormsModule,
     MatAutocompleteModule,
+    MatBadgeModule,
+    MatCardModule,
+    MatChipsModule,
+    MatFormFieldModule,
+    MatGridListModule,
+    MatIconModule,
+    MatListModule,
+    MatInputModule,
     MatButtonModule,
     MatDialogModule,
     MatProgressSpinnerModule,
     MatSidenavModule,
-    MatChipsModule,
     MatSnackBarModule,
     MatSlideToggleModule,
-    PickerModule,
-    MatBadgeModule,
-    WeatherModalComponent,
-    WeatherComponent,
-    UserModalComponent,
-    ResponseModalComponent,
     MyAgePipe,
-    DirectoryModalComponent,
-    RouterModule
+    PickerModule,
+    ResponseModalComponent,
+    ReactiveFormsModule,
+    RouterModule,
+    UserModalComponent,
+    WeatherModalComponent,
+    WeatherComponent
   ]
 
 })

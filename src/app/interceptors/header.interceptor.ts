@@ -21,8 +21,7 @@ export class HeaderInterceptor implements HttpInterceptor {
   // regex = new RegExp('https://plenty-yaks-add-88-166-5-79.loca.lt/');
 
 
-  constructor(private _userService: UserService,
-    private _snackBar: MatSnackBar) { }
+  constructor(private _snackBar: MatSnackBar) { }
 
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
 
