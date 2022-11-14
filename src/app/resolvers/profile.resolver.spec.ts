@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 
-import { OverviewResResolver } from './overview-res.resolver';
+import { ProfileResolver } from './profile.resolver';
 
-describe('OverviewResResolver', () => {
-  let resolver: OverviewResResolver;
+describe('ProfileResolver', () => {
+  let resolver: ProfileResolver;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    resolver = TestBed.inject(OverviewResResolver);
+    resolver = TestBed.inject(ProfileResolver);
   });
 
   it('should be created', () => {

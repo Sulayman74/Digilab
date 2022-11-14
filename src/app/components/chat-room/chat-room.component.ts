@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
+import { ActivatedRoute } from '@angular/router';
 import { ChatMessage } from './../../models/chat-message';
 import { DataService } from 'src/app/services/data.service';
 import { FormControl } from '@angular/forms';
@@ -15,7 +16,7 @@ import { map } from 'rxjs';
 })
 export class ChatRoomComponent implements OnInit {
 
-
+  @Input() online!: any
   chatmessage = new ChatMessage()
   dataUsers!: any
   monProfil!: any
@@ -37,11 +38,10 @@ export class ChatRoomComponent implements OnInit {
 
   constructor(private _userService: UserService,
     private _socketService: SocketService,
-    private _snackBar: MatSnackBar
+    private _snackBar: MatSnackBar,
   ) { }
 
   ngOnInit(): void {
-
 
     this._userService.getProfile().subscribe((monProfil: any) => {
       this.monProfil = monProfil
@@ -63,7 +63,7 @@ export class ChatRoomComponent implements OnInit {
         .subscribe((value: any) => {
           this.messagesReceived = value
 
-          console.log("messages enchangés entre amis", value);
+          // console.log("messages enchangés entre amis", value);
 
 
         })
@@ -105,10 +105,12 @@ export class ChatRoomComponent implements OnInit {
     // })
 
 
-
   }
+
+
   onShow() {
     this.show = !this.show
+    console.log("hello");
   }
 
 

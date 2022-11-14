@@ -39,7 +39,7 @@ export class SocketService {
 
   // ** pour envoyer des messages j'utilise cette méthode
   sendMessage(user: any, message: string) {
-    console.log(user);
+    // console.log(user);
     this._socket.emit('send friend message',
       { friendName: user, content: message })
 
@@ -62,7 +62,6 @@ export class SocketService {
 
   getAllMessages() {
     this._socket.on('friend message', (value: any) => {
-      // console.log(value);
       this.allMessagesReceived$.next(value)
     })
   }

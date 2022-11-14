@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-side-bar-left',
@@ -7,9 +9,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SideBarLeftComponent implements OnInit {
 
+  @Input() monProfile!: any
+
   constructor() { }
 
   ngOnInit(): void {
+
+    // console.warn("Mon profile", this.monProfile);
   }
 
 }

@@ -10,10 +10,10 @@ import { UserResolver } from './../../resolvers/user.resolver';
 
 const routes: Routes = [{
 
-  path: "", component: ChatComponent, canActivate: [AuthGuard],
+  path: "", component: ChatComponent, canActivate: [AuthGuard], resolve: { user: UserResolver },
   children: [
     { path: "chatroom", component: ChatRoomComponent, canActivate: [AuthGuard] },
-    { path: "user", component: UserComponent, resolve: { user: UserResolver } },
+    { path: "user", component: UserComponent },
     { path: "topchatbar", component: TopBarChatComponent }
   ]
 }];

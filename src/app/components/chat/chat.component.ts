@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 
+import { ActivatedRoute } from '@angular/router';
 import { SocketService } from './../../services/socket.service';
+import { User } from 'src/app/models/user';
 
 @Component({
   selector: 'app-chat',
@@ -9,9 +11,17 @@ import { SocketService } from './../../services/socket.service';
 })
 export class ChatComponent implements OnInit {
 
-  constructor(private _socketService: SocketService) { }
+  users!: any
+
+  constructor(private _socketService: SocketService,
+    private _activatedRoute: ActivatedRoute) { }
 
   ngOnInit(): void {
+
+    this._activatedRoute.data.subscribe(({ user }) => {
+      this.users = user
+    })
+
     this._socketService.enterLogin()
 
     this._socketService.getMessagesSent()
@@ -20,5 +30,4 @@ export class ChatComponent implements OnInit {
 
 
   }
-
 }

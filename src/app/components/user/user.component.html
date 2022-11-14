@@ -23,7 +23,7 @@
       <mat-list-item class="left" *ngFor="let people of newArray">
         <mat-list-item *ngIf="newArray && newArray.length > 0" class="user">
           <div class="avatar">
-            <img mat-card-avatar [src]="people.avatar" />
+            <img mat-card-avatar [src]="getAvatar(people.avatar)" />
           </div>
           <mat-list-item class="infos-user">
             <div mat-line class="firstname">
@@ -61,7 +61,11 @@
       <mat-list-item class="user right" *ngFor="let ami of amis; let i = index">
         <mat-list-item *ngIf="amis && amis.length > 0">
           <div class="avatar friend-avatar">
-            <img mat-list-avatar [src]="ami.avatar" alt="Profil d'avatar" />
+            <img
+              mat-list-avatar
+              [src]="getAvatar(ami.avatar)"
+              alt="Profil d'avatar"
+            />
           </div>
 
           <mat-list-item class="infos-user">

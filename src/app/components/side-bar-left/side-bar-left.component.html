@@ -1,5 +1,14 @@
 <section class="left-side">
-  <a routerLink="/overview/profile" routerLinkActive="active">
+  <a
+    [routerLink]="['/overview/profile']"
+    [queryParams]="{ username: monProfile }"
+  >
+    <!-- <a
+    routerLink="/overview/profile"
+    routerLinkActive="active"
+    [routerLink]="['/overview/profile']"
+    [queryParams]="{ username: 'test'}"
+  > -->
     <mat-label class="label">Profile</mat-label>
     <mat-icon>settings_accessibility</mat-icon>
   </a>

@@ -1,6 +1,7 @@
 import { NavBarComponent } from 'src/app/components/nav-bar/nav-bar.component';
 import { NgModule } from '@angular/core';
 import { OverViewComponent } from 'src/app/components/over-view/over-view.component';
+import { OverviewRoutingModule } from './overview-routing.module';
 import { ProfileComponent } from './../../components/profile/profile.component';
 import { SharedModule } from '../shared/shared.module';
 import { SideBarLeftComponent } from 'src/app/components/side-bar-left/side-bar-left.component';
@@ -15,6 +16,7 @@ import { SideBarRightComponent } from 'src/app/components/side-bar-right/side-ba
     ProfileComponent
   ],
   imports: [
+    OverviewRoutingModule,
     SharedModule,
 
   ]

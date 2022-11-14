@@ -14,7 +14,7 @@ export class FinderComponent implements OnInit {
   newArray: any[] = []
   recherches: any[] = []
   jobs = this._dataService.getJobs()
-  
+
   constructor(private _dataService: DataService) { }
 
   ngOnInit(): void {
@@ -24,7 +24,7 @@ export class FinderComponent implements OnInit {
 
 
     })
-console.log(this.jobs);
+    // console.log(this.jobs);
   }
 
 }

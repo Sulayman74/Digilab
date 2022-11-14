@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { concatMap, map } from 'rxjs';
 
@@ -16,6 +16,7 @@ import { UserService } from 'src/app/services/user.service';
   styleUrls: ['./user.component.scss']
 })
 export class UserComponent implements OnInit {
+
 
   // localStorageItem!: any
   // user!: any;
@@ -39,14 +40,11 @@ export class UserComponent implements OnInit {
   constructor(private _userService: UserService,
     private _userModal: MatDialog,
     private _snackBar: MatSnackBar,
-    private _socketService: SocketService,
-    private _activatedRoute: ActivatedRoute) { }
+    private _socketService: SocketService,) { }
 
   ngOnInit(): void {
     this._socketService.onLineUsers()
-    this._activatedRoute.data.subscribe(({ user }) => {
-      this.users = user
-    })
+
     this._userService.getFriends().subscribe((friend: any) => {
       this.amis = [...friend]
 
@@ -61,7 +59,7 @@ export class UserComponent implements OnInit {
 
       // console.warn("ils sont en ligne", this.usersOnline);
       this.newArray.forEach((ami: any) => {
-        console.log(ami.avatar);
+        // console.log(ami.avatar);
         if (this.usersOnline.includes(ami.username)) {
           ami.online = true
         } else {
@@ -78,7 +76,7 @@ export class UserComponent implements OnInit {
         } else {
           ami.online = false
         }
-        console.log(ami);
+        // console.log(ami);
       })
 
     })
@@ -104,7 +102,7 @@ export class UserComponent implements OnInit {
           return user.username != this.myProfile.username
         })
       })
-      console.log("Je suis la", this.newArray);
+      // console.log("Je suis la", this.newArray);
 
     })
 
@@ -126,7 +124,12 @@ export class UserComponent implements OnInit {
 
   }
 
+  getAvatar(url: string) {
+    const avatar = new Image()
+    avatar.src = url
+    return avatar.complete ? url : "https://i.giphy.com/media/wzWxTUiXRQDYc/giphy.webp"
 
+  }
   onOpenDialog(user: any) {
     const modal = this._userModal.open(UserModalComponent,
       {

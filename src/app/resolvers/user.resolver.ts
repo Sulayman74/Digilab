@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Resolve, } from '@angular/router';
+import { SocketService } from './../services/socket.service';
 import { User } from '../models/user';
 import { UserService } from '../services/user.service';
 
@@ -9,8 +10,8 @@ import { UserService } from '../services/user.service';
 })
 
 export class UserResolver implements Resolve<User> {
-  constructor(private _userService: UserService) { }
+  constructor(private _socketService: SocketService) { }
   resolve(): Observable<User> {
-    return this._userService.getUsersList()
+    return this._socketService.getOnlineUsers()
   }
 }
