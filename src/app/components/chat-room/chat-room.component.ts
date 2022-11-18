@@ -78,7 +78,9 @@ export class ChatRoomComponent implements OnInit {
       if (this.dataUsers.username !== value.userID.username) {
         this._snackBar.open
           ('Message reçu de : ' + value.userID.username, "Ok",
-            { verticalPosition: "top", horizontalPosition: "right" })
+            { verticalPosition: "top", horizontalPosition: "right" });
+
+        this.playSound()
 
       }
 
@@ -107,6 +109,12 @@ export class ChatRoomComponent implements OnInit {
 
   }
 
+  playSound() {
+    let audio = new Audio()
+    audio.src = "../assets/sons/Funk.aiff"
+    audio.load();
+    audio.play();
+  }
 
   onShow() {
     this.show = !this.show

@@ -1,8 +1,6 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
-import { concatMap, map } from 'rxjs';
+import { Component, OnInit } from '@angular/core';
 
-import { ActivatedRoute } from '@angular/router';
+import { FormControl } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { SocketService } from 'src/app/services/socket.service';
@@ -68,6 +66,7 @@ export class UserComponent implements OnInit {
         this.newArray = this.newArray.sort((a: any, b: any) => {
           return b.online - a.online
         })
+
       })
 
       this.amis.forEach((ami: any) => {
@@ -76,8 +75,10 @@ export class UserComponent implements OnInit {
         } else {
           ami.online = false
         }
-        // console.log(ami);
+     
       })
+
+
 
     })
 
@@ -95,7 +96,7 @@ export class UserComponent implements OnInit {
       this.users = value.body
       this.newArray = [...this.users]
 
-
+    
       this._userService.getProfile().subscribe((myProfile: any) => {
         this.myProfile = myProfile
         this.newArray = this.newArray.filter((user: any) => {
@@ -106,7 +107,7 @@ export class UserComponent implements OnInit {
 
     })
 
-
+ 
     this.searchBar.valueChanges.subscribe((resultSearch: any) => {
       this.newArray = this.users.filter(
         (user: User) => {
@@ -119,6 +120,7 @@ export class UserComponent implements OnInit {
 
           return user.firstName.toLowerCase().includes(resultSearch.toLowerCase()) || user.lastName.toLowerCase().includes(resultSearch.toLowerCase()) || user.city?.toLowerCase().includes(resultSearch.toLowerCase())
         }
+
       )
     })
 
@@ -154,6 +156,7 @@ export class UserComponent implements OnInit {
       // console.log(friend);
       this.amis.push(friend)
       this._snackBar.open(`Vous avez bien ajouté ${friend.username} en tant qu'ami(e)`, "Ok")
+      this.playSound()
 
     })
   }
@@ -169,6 +172,13 @@ export class UserComponent implements OnInit {
       this._snackBar.open(`Vous avez bien supprimé ${friend.username}`, "Ok")
 
     })
+  }
+
+  playSound() {
+    let audio = new Audio()
+    audio.src = "../assets/sons/ringtone1.mp3"
+    audio.load();
+    audio.play();
   }
 
 }
